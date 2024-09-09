@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    ul{
+        @apply list-none;
+    }
+    ul,li{
+        @apply p-0 m-0;
+    }
+    a{
+        @apply no-underline;
+    }
+    html{
+        @apply overflow-x-hidden p-0 m-0;
+    }
+    body{
+        @apply font-syne text-[16px] leading-[27px] tracking-[0px] font-normal break-words bg-white text-[#868a9b] overflow-x-hidden;
+    }
+    svg{
+        @apply fill-current w-[15px] h-[15px];
+    }
+    img.svg{
+        @apply w-[15px] h-[15px];
+    }
+    h1,h2,h3,h4,h5,h6{
+        @apply font-bold leading-[1.3] font-syne text-black lining-nums proportional-nums;
+    }
+    h1{
+        @apply text-[45px];
+    }
+    h2{
+        @apply text-[36px];
+    }
+    h3{
+        @apply text-[30px];
+    }
+    h4{
+        @apply text-[24px];
+    }
+    h5{
+        @apply text-[20px];
+    }
+    h6{
+        @apply text-[16px];
+    }
+
+    /*---------------------------------------------------*/
+    /*	ERLING MEDIA QUERIES (FOR SMALL DEVICES)
+    /*---------------------------------------------------*/
+
+    /******** Larger Screens *********/
+    .container{
+        @apply large:max-w-[968px]
+    }
+    .erling_tm_sidebar_menu{
+        @apply large:w-[300px]
+    }
+    .erling_tm_mainpart{
+        @apply large:pl-[300px]
+    }
+    .erling_tm_sidebar_menu .sidebar_inner{
+        @apply large:py-0 large:px-[30px]
+    }
+    .erling_tm_sidebar_menu .menu ul li a{
+        @apply large:py-[2px] large:px-0
+    }
+    .erling_tm_hero .image{
+        @apply large:w-[350px] large:h-[350px]
+    }
+    .erling_tm_hero .text h3{
+        @apply large:text-[85px]
+    }
+    .erling_tm_hero .job{
+        @apply large:mt-[20px]
+    }
+    .erling_tm_title h3{
+        @apply large:text-[35px]
+    }
+    .erling_tm_service .service_list .title{
+        @apply large:text-[18px]
+    }
+    .erling_tm_service .service_list .list_inner{
+        @apply large:py-[65px] large:px-[45px]
+    }
+    .erling_tm_news .news_list ul li .title h3{
+        @apply large:text-[18px]
+    }
+    .erling_tm_portfolio .portfolio_list .details h3{
+        @apply large:text-[18px]
+    }
+    .erling_tm_experience .box .occ h3{
+        @apply large:text-[16px]
+    }
+   
+    /******** Middle Screens *********/
+    .erling_tm_header{
+        @apply middle:hidden
+    }
+    .erling_tm_sidebar_menu{
+        @apply middle:hidden
+    }
+    .erling_tm_mainpart{
+        @apply middle:pl-0
+    }
+    .erling_tm_hero .details{
+        @apply middle:flex-col middle:text-center middle:w-full
+    }
+    .erling_tm_hero .image{
+        @apply middle:w-[300px] middle:h-[300px] middle:mb-[40px]
+    }
+    .erling_tm_hero .text{
+        @apply middle:p-0
+    }
+    .erling_tm_hero .text h3{
+        @apply middle:text-[60px]
+    }
+    .erling_tm_about .about_inner{
+        @apply middle:flex-col
+    }
+    .erling_tm_about .left{
+        @apply middle:w-full middle:pr-0 middle:mb-[40px]
+    }
+    .erling_tm_about .right{
+        @apply middle:w-full middle:pl-0
+    }
+    .erling_tm_title h3{
+        @apply middle:text-[32px]
+    }
+    .rling_tm_title span{
+        @apply middle:text-[15px] middle:pl-[45px]
+    }
+    .erling_tm_title span:before{
+        @apply middle:w-[30px]
+    }
+    .accordion_wrap .accordion_header h3{
+        @apply middle:text-[16px]
+    }
+    .erling_tm_experience .box .title h3{
+        @apply middle:text-[16px]
+    }
+    .erling_tm_testimonials .short h3{
+        @apply middle:text-[16px]
+    }
+    .erling_tm_service .service_list > ul > li{
+        @apply middle:w-1/2
+    }
+    .erling_tm_service .service_list .title{
+        @apply middle:text-[20px]
+    }
+    .erling_tm_service .service_list .list_inner .svg{
+        @apply middle:w-[53px] middle:h-[53px]
+    }
+    .erling_tm_swiper_progress .pagination_progress{
+        @apply middle:w-[100px]
+    }
+    .erling_tm_experience .experience_inner{
+        @apply middle:flex-col
+    }
+    .erling_tm_experience .left{
+        @apply middle:w-full middle:pr-0 middle:mb-[30px]
+    }
+    .erling_tm_experience .right{
+        @apply middle:w-full middle:pl-0
+    }
+    .erling_tm_experience .box .occ h3{
+        @apply middle:text-[16px]
+    }
+    .erling_tm_news .news_list ul li{
+        @apply middle:w-1/2
+    }
+    
+    /******** Small Screens *********/
+    .erling_tm_service .service_list > ul{
+        @apply small:m-0
+    }
+    .erling_tm_service .service_list > ul > li{
+        @apply small:w-full small:pl-0
+    }
+    .erling_tm_news .news_list ul{
+        @apply small:m-0
+    }
+    .erling_tm_news .news_list ul li{
+        @apply small:w-full small:pl-0
+    }
+    .erling_tm_contact .form_wrapper ul{
+        @apply small:m-0
+    }
+    .erling_tm_contact .form_wrapper ul li{
+        @apply small:w-full small:pl-0
+    }
+    .erling_tm_contact .enter_code input{
+        @apply small:w-full
+    }
+    .accordion_wrap .info_list ul li span:first-child{
+        @apply small:min-w-[auto]
+    }
+    .erling_tm_copyright .inner{
+        @apply small:flex-col
+    }
+    .erling_tm_copyright .logo{
+        @apply small:mb-[15px]
+    }
+    .erling_tm_copyright .logo img{
+        @apply small:max-w-[110px] small:max-h-[70px]
+    }
+    .erling_tm_service .service_list .list_inner{
+        @apply small:py-[60px] small:px-[30px]
+    }
+    .erling_tm_experience .box ul li .list_inner{
+        @apply small:px-[35px] small:pt-[40px] small:pb-[35px]
+    }
+    .accordion_wrap .accordion_header{
+        @apply small:px-[30px] small:py-[25px]
+    }
+    .accordion_wrap .accordion_content{
+        @apply small:p-[30px]
+    }
+    .erling_tm_testimonials .short{
+        @apply small:px-[30px] small:py-[25px]
+    }
+    .erling_tm_testimonials .desc{
+        @apply small:pt-[40px] small:px-[30px] small:pb-[35px]
+    }
+    .erling_tm_experience .box .title{
+        @apply small:px-[30px] small:py-[25px]
+    }
+    .erling_tm_experience .box ul li .list_inner{
+        @apply small:pt-[40px] small:px-[30px] small:pb-[35px]
+    }
+    .erling_tm_hero .job{
+        @apply small:py-[10px] small:px-[15px]
+    }
+}
