@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+public function about()
+{
+    return view('about');
+}
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return view('home');
     }
 
     /**
