@@ -12,7 +12,10 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        return view('testimonials');
+        $testimonials = Testimonial::get();
+
+        return view('testimonials')
+            ->with('testimonials', $testimonials);
     }
 
     /**
