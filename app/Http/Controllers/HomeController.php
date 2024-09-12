@@ -2,20 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Home;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 public function about()
 {
-    return view('about');
+    $profiles= Home::get();
+    return view('about')
+        ->with('profiles',$profiles);
 }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('home');
+        $profiles= Home::get();
+
+        return view('home')
+            ->with('profiles',$profiles);
     }
 
     /**

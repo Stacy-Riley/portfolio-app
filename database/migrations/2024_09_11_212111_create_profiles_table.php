@@ -22,7 +22,8 @@ return new class extends Migration
             $table->text('body')->nullable();
             $table->string('job_titles')->nullable();
             $table->string('programming_skills')->nullable();
-            $table->string('language_skills')->nullable();
+            $table->string('webdev_tools')->nullable();
+            $table->string('soft_skills')->nullable();
             $table->string('cover_image');
             $table->string('supporting_images')->nullable();
             $table->timestamps();

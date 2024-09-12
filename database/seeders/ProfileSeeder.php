@@ -22,8 +22,9 @@ class ProfileSeeder extends Seeder
                 'subtitle' => 'Crafting Effective and Efficient Websites to Drive Results.',
                 'body' => 'I specialize in High-Quality Web Development for Business Success.',
                 'job_titles' => 'Full Stack Application Developer',
-                'programming_skills' => 'Website Development, JavaScript, PHP Laravel',
-                'language_skills' => 'English, Spanish',
+                'programming_skills' => 'HTML5, CSS3, JavaScript ES6, PHP, MySQL',
+                'webdev_tools' => 'React.js, Bootstrap, Laravel, Tailwind CSS, WordPress, Git/GitHub, Docker, JIRA, Figma',
+                'soft_skills' => 'Professional Customer Support, Writing Documentation and Reports, Team Collaboration, Problem-Solving, Time Management, Adaptability',
                 'cover_image' => '/assets/images/profile/profile1.png',
                 'supporting_images' => ''
             ]
