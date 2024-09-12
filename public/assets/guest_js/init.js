@@ -53,7 +53,6 @@ function erling_tm_nav_bg(){
 	jQuery(window).on('scroll',function(){
 		var menu	 		= jQuery('.erling_tm_header');
 		var progress	 	= jQuery('.progressbar');
-		var WinOffset		= jQuery(window).scrollTop();
 
 		if(WinOffset >= 100){
 			menu.addClass('animate');

@@ -12,7 +12,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('services');
+        $services = Service::get();
+
+        return view('services')
+            ->with('services', $services);
     }
 
     /**

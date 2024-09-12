@@ -5,7 +5,7 @@
     <!-- ABOUT -->
 @foreach($profiles as $profile)
     <div class="erling_tm_section w-full h-auto clear-both clearfix" id="about">
-        <div class="erling_tm_about w-full bg-[#f7f7f7] px-0 py-[143px]">
+        <div class="erling_tm_about w-full bg-[#f7f7f7] pt-[70px]">
             <div class="container">
                 <div class="about_inner w-full flex">
                     <div class="left wow fadeInLeft w-1/2 pr-[50px]" data-wow-duration="1s">
@@ -14,7 +14,7 @@
                             <h3 class="text-[45px] font-bold">{{ $profile->subtitle }}</h3>
                         </div>
                         <div class="text w-full mb-[40px]">
-                            <p>{{ $profile->body }}</p>
+                            <p>{!! $profile->body !!} </p>
                         </div>
                     </div>
                     <div class="right wow fadeInLeft w-1/2 pl-[50px]" data-wow-duration="1s" data-wow-delay="0.2s">
