@@ -7,9 +7,9 @@
 jQuery(document).ready(function(){
 
 	"use strict";
-	
+
 	// here all ready functions
-	
+
 	erling_tm_modalbox();
 	erling_tm_nav_bg();
 	erling_tm_trigger_menu();
@@ -21,15 +21,15 @@ jQuery(document).ready(function(){
 	erling_tm_swiper();
 	myAccordion();
 	erling_tm_totop();
-	
+
 	jQuery(window).load('body', function(){
 		erling_tm_my_load();
 	});
-	
+
 	jQuery(window).on('scroll', function(){
 		erling_tm_progress_line();
 	});
-	
+
 });
 
 // -----------------------------------------------------
@@ -38,7 +38,7 @@ jQuery(document).ready(function(){
 
 function erling_tm_modalbox(){
 	"use strict";
-	
+
 	jQuery('.erling_tm_all_wrap').prepend('<div class="erling_tm_modalbox"><div class="box_inner"><div class="close"><a href="#"><i class="icon-cancel"></i></a></div><div class="description_wrap"></div></div></div>');
 }
 
@@ -47,14 +47,14 @@ function erling_tm_modalbox(){
 // -------------------------------------------------
 
 function erling_tm_nav_bg(){
-	
+
 	"use strict";
-	
+
 	jQuery(window).on('scroll',function(){
 		var menu	 		= jQuery('.erling_tm_header');
 		var progress	 	= jQuery('.progressbar');
 		var WinOffset		= jQuery(window).scrollTop();
-		
+
 		if(WinOffset >= 100){
 			menu.addClass('animate');
 			progress.addClass('animate');
@@ -70,9 +70,9 @@ function erling_tm_nav_bg(){
 // -------------------------------------------------
 
 function tdProgress(container){
-	
+
 	"use strict";
-		
+
 	container.find('.progress_inner').each(function() {
 		var progress 		= jQuery(this);
 		var pValue 			= parseInt(progress.data('value'), 10);
@@ -89,7 +89,7 @@ jQuery('.erling_progress').each(function() {
 	"use strict";
 
 	var pWrap 			= jQuery(this);
-	pWrap.waypoint({handler: function(){tdProgress(pWrap);},offset:'90%'});	
+	pWrap.waypoint({handler: function(){tdProgress(pWrap);},offset:'90%'});
 });
 
 // -----------------------------------------------------
@@ -97,7 +97,7 @@ jQuery('.erling_progress').each(function() {
 // -----------------------------------------------------
 
 function erling_tm_trigger_menu(){
-	
+
 	"use strict";
 
 	var audio1			= jQuery('.audiowrap #audio1');
@@ -130,7 +130,7 @@ function erling_tm_trigger_menu(){
 		}
 		return false;
 	});
-	
+
 	mobileMenuList.on('click',function(){
 		jQuery('.trigger .hamburger').removeClass('is-active');
 		mobileMenu.slideUp();
@@ -143,13 +143,13 @@ function erling_tm_trigger_menu(){
 // -------------------------------------------------
 
 function erling_tm_modalbox_news(){
-	
+
 	"use strict";
-	
+
 	var modalBox		= jQuery('.erling_tm_modalbox');
 	var button			= jQuery('.erling_tm_news .erling_tm_full_link, .erling_tm_news .news_list ul li .title a');
 	var closePopup		= modalBox.find('.close');
-	
+
 	button.on('click',function(){
 		var element 	= jQuery(this);
 		var parent 		= element.closest('li');
@@ -178,12 +178,12 @@ function erling_tm_modalbox_news(){
 // -------------------------------------------------
 
 function erling_tm_modalbox_portfolio(){
-	
+
 	"use strict";
-	
+
 	var modalBox	= jQuery('.erling_tm_modalbox');
 	var button		= jQuery('.erling_tm_portfolio .portfolio_popup');
-	
+
 	button.on('click',function(){
 		var element 	= jQuery(this);
 		var parent		= element.closest('.list_inner');
@@ -191,11 +191,11 @@ function erling_tm_modalbox_portfolio(){
 		var details 	= parent.find('.hidden_content_portfolio').html();
 		var title	 	= parent.find('.details h3').text();
 		var category	= parent.find('.details span').text();
-		
+
 		modalBox.addClass('opened');
 		modalBox.find('.description_wrap').html(details);
 		modalBox.find('.popup_details').prepend('<div class="top_image"><img src="assets/img/thumbs/4-2.jpg" alt="" /><div class="main" data-img-url="'+image+'"></div></div>');
-		modalBox.find('.popup_details .top_image').after('<div class="portfolio_main_title"><h3 class="title">'+title+'</h3><span class="category"><a href="#">'+category+'</a></span></div>');	
+		modalBox.find('.popup_details .top_image').after('<div class="portfolio_main_title"><h3 class="title">'+title+'</h3><span class="category"><a href="#">'+category+'</a></span></div>');
 		erling_tm_data_images();
 		return false;
 	});
@@ -206,12 +206,10 @@ function erling_tm_modalbox_portfolio(){
 // -----------------------------------------------------
 
 function erling_tm_preloader(){
-	
 	"use strict";
-	
 	var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 	var preloader = $('#preloader');
-	
+
 	if (!isMobile) {
 		setTimeout(function() {
 			preloader.addClass('preloaded');
@@ -230,9 +228,9 @@ function erling_tm_preloader(){
 // -----------------------------------------------------
 
 function erling_tm_my_load(){
-	
+
 	"use strict";
-	
+
 	var speed	= 500;
 	setTimeout(function(){erling_tm_preloader();},speed);
 	setTimeout(function(){jQuery('.erling_tm_all_wrap').addClass('ready');},speed+2000);
@@ -243,11 +241,11 @@ function erling_tm_my_load(){
 // -----------------------------------------------------
 
 function erling_tm_imgtosvg(){
-	
+
 	"use strict";
-	
+
 	jQuery('img.svg').each(function(){
-		
+
 		var jQueryimg 		= jQuery(this);
 		var imgClass		= jQueryimg.attr('class');
 		var imgURL			= jQueryimg.attr('src');
@@ -277,7 +275,7 @@ function erling_tm_imgtosvg(){
 // -----------------------------------------------------
 
 function erling_tm_popup(){
-	
+
 	"use strict";
 
 	jQuery('.gallery_zoom').each(function() { // the containers for all your galleries
@@ -302,11 +300,11 @@ function erling_tm_popup(){
 			fixedContentPos: true
 		});
 	});
-	
+
 	jQuery('.soundcloude_link').magnificPopup({
 	  type : 'image',
 	   gallery: {
-		   enabled: true, 
+		   enabled: true,
 	   },
 	});
 }
@@ -316,11 +314,11 @@ function erling_tm_popup(){
 // -----------------------------------------------------
 
 function erling_tm_data_images(){
-	
+
 	"use strict";
-	
+
 	var data			= jQuery('*[data-img-url]');
-	
+
 	data.each(function(){
 		var element			= jQuery(this);
 		var url				= element.data('img-url');
@@ -346,7 +344,7 @@ jQuery('.anchor_nav').onePageNav();
 
 function erling_tm_swiper(){
 	"use strict";
-	
+
 	$('.swiper-section').each(function(){
 		var element 	= $(this);
 		var container 	= element.find('.swiper-container');
@@ -358,12 +356,12 @@ function erling_tm_swiper(){
 			autoplay: {
 				delay: 6000,
 			},
-			
+
 			navigation: {
 				nextEl: '.my_next',
 				prevEl: '.my_prev',
 			  },
-			
+
 			pagination: {
 				el: '.erling_tm_swiper_progress',
 				type: 'custom', // progressbar
@@ -411,14 +409,14 @@ function erling_tm_swiper(){
 
 function myAccordion(){
 	"use strict";
-	
+
 	jQuery('.accordion_wrap').removeClass('ready');
 	jQuery('.accordion.active').each(function(){
 		jQuery(this).find('.accordion_content').css({display: 'block'});
 	});
-	
+
 	var button		= jQuery('.accordion_wrap .accordion_header');
-	
+
 	button.on('click',function(){
 		var element = jQuery(this);
 		var li		= element.closest('.accordion');
@@ -428,11 +426,11 @@ function myAccordion(){
 			li.siblings('.active').removeClass('active').find('.accordion_content').slideUp();
 			li.addClass('active').find('.accordion_content').slideDown();
 		}
-		
+
 		return false;
-		
+
 	});
-	
+
 }
 
 // -----------------------------------------------------
@@ -440,9 +438,9 @@ function myAccordion(){
 // -----------------------------------------------------
 
 function erling_tm_progress_line(){
-	
+
 	"use strict";
-	
+
 	var line			= jQuery('.progressbar .line');
 	var documentHeight 	= jQuery(document).height();
 	var windowHeight 	= jQuery(window).height();
@@ -458,15 +456,15 @@ function erling_tm_progress_line(){
 // -----------------------------------------------------
 
 function erling_tm_totop(){
-  
+
 	"use strict";
-	
+
 	var text = $('.progressbar .text');
 	text.css({bottom: 105 + text.width()});
 	$(".progressbar a").on('click', function(e) {
-		e.preventDefault();    
+		e.preventDefault();
 		$("html, body").animate({ scrollTop: 0 }, 'slow');
 		return false;
 	});
-	
+
 }
