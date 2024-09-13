@@ -15,6 +15,8 @@ Route::get('/portfolio', [ProjectController::class, 'index'])->name('portfolio')
 Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials');
 Route::get('/news', [BlogController::class, 'index'])->name('news');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+// Handle form submission with rate limiting to deter spam to contact form
+Route::post('/contact', [ContactController::class, 'store'])->name('contactForm')->middleware('throttle:5,1');
 
 
 Route::get('/dashboard', function () {

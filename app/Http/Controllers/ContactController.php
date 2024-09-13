@@ -28,7 +28,22 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'sometimes|string|nullable',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string|max:255',
+        ]);
+
+        if ($request->has('my_extra_field') && !empty($request->my_extra_field)) {
+            // It's a bot, reject the form submission
+            return redirect()->back()->with('error', 'Bot detected!');
+        }
+
+        Contact::create($formData);
+        return redirect()->route('contactForm') // Ensure this matches the route name
+        ->with('success', 'Your message has been sent successfully!');
     }
 
     /**

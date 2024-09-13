@@ -3,7 +3,7 @@
     <div class="mobile_menu_inner w-full h-auto clear-both float-left bg-white pt-[10px] px-[20px] pb-[10px]">
         <div class="mobile_in w-full h-auto clear-both flex items-center justify-between">
             <div class="logo">
-                <a href="#"><img class="max-w-[90px] max-h-[70px]" src="assets/img/logo/logo.png" alt="" /></a>
+                <a href="/"><img class="max-w-[200px] " src="{{env('APP_URL')}}/assets/images/svg/logo.png" alt="" /></a>
             </div>
             <div class="trigger leading-[0]">
                 <div class="hamburger hamburger--slider">
@@ -34,7 +34,9 @@
 <div class="erling_tm_sidebar_menu w-[400px] left-0 top-0 bottom-0 fixed bg-white flex items-center large:w-[300px] middle:hidden">
     <div class="sidebar_inner w-full py-0 px-[70px]">
         <div class="logo mb-[60px]">
-            <a href="#"><img class="max-w-[140px] max-h-[100px]" src="assets/img/logo/logo.png" alt="" /></a>
+            <a href="/">
+                <img src="{{env('APP_URL')}}/assets/images/svg/logo.png" alt="" />
+            </a>
         </div>
         <div class="menu mb-[55px]">
             <ul class="anchor_nav">
@@ -48,7 +50,7 @@
             </ul>
         </div>
         <div class="copyright">
-            <p>&copy;2024 Created By Stacy</p>
+            <p>&copy;2024 <span class="">CreatedByStacy</span></p>
             <p>All rights are reserved.</p>
         </div>
     </div>
