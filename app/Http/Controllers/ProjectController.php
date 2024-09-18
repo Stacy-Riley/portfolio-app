@@ -12,7 +12,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects');
+        $projects = Project::query()
+            ->active()
+            ->orderBy('priority')
+            ->get();
+
+        return view('projects')
+            ->with('projects', $projects);
     }
 
     /**

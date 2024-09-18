@@ -29,7 +29,7 @@
                                 <li><i class="icon-star-1 text-[18px]"></i></li>
                             </ul>
                             <p class="relative z-[1]">
-                                {{ $testimonial->body }}
+                                {!! $testimonial->body !!}
                             </p>
                         </div>
                         <img class="svg absolute bottom-[-130px] right-[-100px] w-[500px] h-[500px] opacity-[.07]" src="{{env('APP_URL')}}/assets/images/svg/quote.svg" alt="" />

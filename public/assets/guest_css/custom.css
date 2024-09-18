@@ -1,3 +1,18 @@
+/*Modal of Portfolio*/
+.modal-see-more-container a {
+    border-bottom: 2px solid #ba3d3d;
+    padding-bottom: 8px;
+}
+
+.modal-see-more-container a:hover {
+    color: #ba3d3d !important;
+}
+
+.supporting-images-container {
+    margin-bottom: 40px;
+    max-height: 100%;
+}
+
 .erling_tm_all_wrap,
 .erling_tm_all_wrap *{
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -155,7 +170,7 @@
  ::-ms-input-placeholder { /* Microsoft Edge */
     color: #868a9b;
  }
- 
+
  ::placeholder { /* Most modern browsers support this now. */
     color: #868a9b;
  }
@@ -199,7 +214,7 @@
 	visibility: hidden;
 	position: relative;
 	left: 10px;
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -218,7 +233,7 @@
 	text-decoration: none;
 	color: #868a9b;
 	display: inline-block;
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -233,8 +248,8 @@
 	line-height: 1;
 	padding-left: 40px;
 }
-.trigger .hamburger-inner, 
-.trigger .hamburger-inner:after, 
+.trigger .hamburger-inner,
+.trigger .hamburger-inner:after,
 .trigger .hamburger-inner:before{
 	height: 2px;
 	width: 30px;
@@ -309,7 +324,7 @@
 	padding: 20px 50px;
 	position: relative;
 	border: none;
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -442,7 +457,7 @@
 	-webkit-animation: wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* Safari 4+ */
 	-moz-animation:    wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* Fx 5+ */
 	animation:         wow 2s cubic-bezier(0.165, 0.840, 0.440, 1.000);  /* IE 10+ */
-	width:100%;	
+	width:100%;
 }
 
 @-webkit-keyframes wow {0%{ width:0%; } 100%{ width:100%; }}
@@ -451,7 +466,7 @@
 
 .erling_tm_portfolio .portfolio_list .image .main{
 	transform: scale(1)translateZ(0);
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -460,7 +475,7 @@
 }
 .erling_tm_portfolio .portfolio_list .details{
 	box-shadow: 0px 0px 20px rgba(0,0,0,.2);
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -526,7 +541,7 @@
 	left: 0;
 	transform-origin: left top;
 	transform: scale(0);
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -552,7 +567,7 @@
 	text-decoration: none;
 	color: #000;
 	font-size: 14px;
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -609,7 +624,7 @@
     right: -25px;
     background-color: rgba(0,0,0,.08);
     z-index: 10;
-	
+
 	-webkit-transition: all .3s ease;
 	   -moz-transition: all .3s ease;
 	    -ms-transition: all .3s ease;
@@ -713,7 +728,7 @@
 	.erling_tm_hero .wrapper .text{padding: 0px;}
 	.erling_tm_hero .wrapper .text h3{font-size: 60px;}
 	.erling_tm_hero .wrapper.textspacing .text h3:nth-child(2){padding-left: 0px;}
-	.erling_tm_hero .wrapper.textspacing .job{margin-left: 0px;}	
+	.erling_tm_hero .wrapper.textspacing .job{margin-left: 0px;}
 }
 
 

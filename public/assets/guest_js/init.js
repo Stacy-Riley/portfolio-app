@@ -188,13 +188,13 @@ function erling_tm_modalbox_portfolio(){
 		var parent		= element.closest('.list_inner');
 		var image		= parent.find('.image .main').data('img-url');
 		var details 	= parent.find('.hidden_content_portfolio').html();
-		var title	 	= parent.find('.details h3').text();
-		var category	= parent.find('.details span').text();
+        var title	 	= parent.find('.details h3').text();
+        var subtitle	= parent.find('.main_details .subtitle').data('subtitle');
 
 		modalBox.addClass('opened');
 		modalBox.find('.description_wrap').html(details);
-		modalBox.find('.popup_details').prepend('<div class="top_image"><img src="assets/img/thumbs/4-2.jpg" alt="" /><div class="main" data-img-url="'+image+'"></div></div>');
-		modalBox.find('.popup_details .top_image').after('<div class="portfolio_main_title"><h3 class="title">'+title+'</h3><span class="category"><a href="#">'+category+'</a></span></div>');
+        modalBox.find('.popup_details').prepend('<div class="top_image"><img src="'+image+'" alt="" /><div class="main" data-img-url="'+image+'"></div></div>');
+        modalBox.find('.popup_details .top_image').after('<div class="portfolio_main_title"><h3 class="title">'+title+'</h3><span class="subtitle"><a href="#">'+subtitle+'</a></span></div>');
 		erling_tm_data_images();
 		return false;
 	});
@@ -340,66 +340,54 @@ jQuery('.anchor_nav').onePageNav();
 // -----------------------------------------------------
 // ---------------   SWIPER SLIDER    ------------------
 // -----------------------------------------------------
+function erling_tm_swiper() {
+    "use strict";
 
-function erling_tm_swiper(){
-	"use strict";
+    $('.swiper-section').each(function () {
+        var element = $(this);
+        var container = element.find('.swiper-container');
 
-	$('.swiper-section').each(function(){
-		var element 	= $(this);
-		var container 	= element.find('.swiper-container');
-		var mySwiper 	= new Swiper (container, {
-			loop: false,
-			slidesPerView: 1,
-			spaceBetween: 0,
-			loopAdditionalSlides: 1,
-			autoplay: {
-				delay: 6000,
-			},
+        // Remove any empty slides before initializing Swiper
+        element.find('.swiper-slide').each(function() {
+            if ($(this).is(':empty')) {
+                $(this).remove();
+            }
+        });
 
-			navigation: {
-				nextEl: '.my_next',
-				prevEl: '.my_prev',
-			  },
+        // Initialize Swiper without pagination
+        var mySwiper = new Swiper(container, {
+            loop: false,
+            slidesPerView: 1, // Default for small screens
+            spaceBetween: 0,
+            loopAdditionalSlides: 0, // Disable extra slides
 
-			pagination: {
-				el: '.erling_tm_swiper_progress',
-				type: 'custom', // progressbar
-				renderCustom: function (swiper,current,total) {
+            autoplay: {
+                delay: 6000,
+            },
 
+            navigation: {
+                nextEl: '.my_next',
+                prevEl: '.my_prev',
+            },
 
-					// progress animation
-					var scale,translateX;
-					var progressDOM	= container.find('.erling_tm_swiper_progress');
-					if(progressDOM.hasClass('fill')){
-						translateX 	= '0px';
-						scale		= parseInt((current/total)*100)/100;
-					}else{
-						scale 		= parseInt((1/total)*100)/100;
-						translateX 	= (current-1) * parseInt((100/total)*100)/100 + 'px';
-					}
+            // Breakpoints to show 2 and 3 slides on larger screens
+            breakpoints: {
+                700: {
+                    slidesPerView: 2, // Show 2 slides on medium screens
+                    spaceBetween: 20, // Adjust space between slides
+                },
+                1200: {
+                    slidesPerView: 2, // Show 3 slides on large screens
+                    spaceBetween: 40, // Adjust space for larger screens
+                }
+            }
+        });
+    });
 
-
-					progressDOM.find('.all span').css({transform:'translate3d('+translateX+',0px,0px) scaleX('+scale+') scaleY(1)'});
-					if(current<10){current = '0' + current;}
-					if(total<10){total = '0' + total;}
-					progressDOM.find('.current').html(current);
-					progressDOM.find('.total').html(total);
-				}
-			},
-			breakpoints: {
-				700: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				1200: {
-					slidesPerView: 3,
-					spaceBetween: 40,
-				}
-			}
-		});
-	});
-	erling_tm_imgtosvg();
+    erling_tm_imgtosvg();
 }
+
+
 
 
 // -----------------------------------------------------

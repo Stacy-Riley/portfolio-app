@@ -3,7 +3,7 @@
 @section('content')
     <!-- SERVICE -->
     <div class="erling_tm_section w-full h-auto clear-both clearfix" id="service">
-        <div class="erling_tm_service w-full px-0 pt-[70px] pb-[40px]">
+        <div class="erling_tm_service w-full px-0 py-[143px]">
             <div class="container">
                 <div class="erling_tm_title w-full mb-[70px] wow fadeInLeft">
                     <span class="inline-block mb-[10px] uppercase relative pl-[60px]" data-wow-duration="1s">Services</span>

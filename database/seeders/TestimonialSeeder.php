@@ -25,7 +25,7 @@ class TestimonialSeeder extends Seeder
             [
                 'is_published' => true,
                 'priority' => 2,
-                'body' => 'Working with CreatedByStacy was an absolute pleasure! They created a web application for my online English teaching business that exceeded all my expectations. The process was smooth from start to finish, and they really took the time to understand my needs. The end result was a user-friendly, beautifully designed platform that has made managing my courses so much easier. I couldn\’t be happier with the service and professionalism I received!',
+                'body' => 'Working with CreatedByStacy was an absolute pleasure! They created a web application for my online English teaching business that exceeded all my expectations. The process was smooth from start to finish, and they really took the time to understand my needs. The end result was a user-friendly, beautifully designed platform that has made managing my courses so much easier. I couldn\'t be happier with the service and professionalism I received!',
                 'author' => 'Lauren R.',
                 'job_title' => 'Learn English Online',
                 'publish_date' => null
