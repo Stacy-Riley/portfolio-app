@@ -12,7 +12,13 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog_index');
+        $blogs = Blog::query()
+            ->active()
+            ->orderBy('priority')
+            ->get();
+
+        return view('blog_index')
+            ->with('blogs', $blogs);
     }
 
     /**
