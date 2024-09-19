@@ -1,0 +1,114 @@
+/******************************************************************* */
+/***** SUMMERNOTE - TEXT EDITOR *****/
+/* ****************************************************************** */
+.note-toolbar {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.note-toolbar .note-btn-group {
+    flex: 1 1 auto;
+    min-width: 50px;
+    margin-bottom: 5px; /* Space between rows when wrapping */
+}
+
+/******************************************************************* */
+/***** TABLER ADMIN SIDEBAR - TEXT EDITOR *****/
+/* ****************************************************************** */
+.admin-navbar-aside {
+    background: #EBC8CA !important;
+    padding: 20px 10px !important;
+}
+
+.admin-navbar-aside h1 {
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.admin-form-button {
+    border: 1px solid #102E96;
+    border-radius: 5px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #102E96;
+    width: 150px;
+}
+
+.admin-form-button:hover {
+    background-color: #6a6969;
+    color: white;
+    cursor: pointer;
+}
+
+.admin-form-button:focus {
+    background-color: #6a6969;
+    color: white;
+    cursor: pointer;
+}
+
+.admin-form-button:active {
+    background-color: #6a6969;
+    color: white;
+    cursor: pointer;
+}
+
+.admin-logout-button {
+    border-radius: 5px;
+    padding: 6px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #a1a0a0;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-logout-button:active {
+    transform: translateY(2px); /* Moves the button down slightly */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+@media screen and  (max-width: 991px) {
+     .admin-navbar-aside h1 {
+         width: 200px;
+         margin-right: 10px;
+     }
+}
+
+@media (min-width: 992px) and (max-width: 1098px) {
+    .form-screen-transition {
+        margin-left: 125px;
+    }
+}
+
+/******************************************************************* */
+/***** TABLER ADMIN BLOG TABLE  *****/
+/* ****************************************************************** */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+/*    Targeting the id in partners table - numeric field*/
+table.dataTable td.dt-type-numeric {
+        text-align: center !important;
+    }
+@media (max-width:991px){
+    .offset-md-2-5 {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width:992px){
+    .offset-md-2-5 {
+        margin-left: 20.833333%; /* (2.5 / 12) * 100 */
+    }
+
+}

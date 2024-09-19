@@ -1,3 +1,4 @@
+{{--    Admin Layout--}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -14,23 +15,20 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+    <body>
+        @yield('custom_styles')
+        @include('partials.assets.admin_styles')
+        @include('partials.assets.admin_summernote')
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+        <!-- Page Content -->
+        <main>
+            @include('partials.admin.sidebar')
+            @yield('content')
+        </main>
+
+        @include('partials.assets.admin_scripts')
+        @yield('custom_scripts')
+        @yield('scripts')
     </body>
 </html>
