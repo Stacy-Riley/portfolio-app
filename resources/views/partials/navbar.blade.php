@@ -3,7 +3,7 @@
     <div class="mobile_menu_inner w-full h-auto clear-both float-left bg-white pt-[10px] px-[20px] pb-[10px]">
         <div class="mobile_in w-full h-auto clear-both flex items-center justify-between">
             <div class="logo">
-                <a href="/"><img class="max-w-[200px] " src="{{env('APP_URL')}}/assets/images/svg/logo.png" alt="" /></a>
+                <a href="/"><img class="max-w-[200px] " src="{{env('APP_URL')}}/assets/images/logo.png" alt="" /></a>
             </div>
             <div class="trigger leading-[0]">
                 <div class="hamburger hamburger--slider">
@@ -35,7 +35,7 @@
     <div class="sidebar_inner w-full py-0 px-[70px]">
         <div class="logo mb-[60px]">
             <a href="/">
-                <img src="{{env('APP_URL')}}/assets/images/svg/logo.png" alt="" />
+                <img src="{{env('APP_URL')}}/assets/images/logo.png" alt="" />
             </a>
         </div>
         <div class="menu mb-[55px]">
@@ -50,7 +50,7 @@
             </ul>
         </div>
         <div class="copyright">
-            <p>&copy;2024 <span class="">CreatedByStacy</span></p>
+            <p>&copy;2024 | <span class="">Created By Stacy</span></p>
             <p>All rights are reserved.</p>
         </div>
     </div>
