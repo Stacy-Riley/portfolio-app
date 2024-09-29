@@ -13,7 +13,9 @@ class AdminProfileController extends Controller
      */
     public function index()
     {
-        return view('admin.profile_index');
+        $profiles = Profile::orderBy('created_at', 'desc')->get();
+        return view('admin.profile_index')
+            ->with('profiles', $profiles);
     }
 
     /**
@@ -21,7 +23,7 @@ class AdminProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.profile_create');
     }
 
     /**
@@ -29,13 +31,35 @@ class AdminProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->validate([
+            'is_published' => 'required|boolean',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'subtitle' => 'required|string',
+            'body' => 'required|string',
+            'job_titles' => 'required|string',
+            'programming_skills' => 'required|string',
+            'webdev_tools' => 'required|string',
+            'soft_skills' => 'required|string',
+            'cover_image' => 'sometimes|file|image|max:5000',
+        ]);
+        if($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('profile_images', options:'public');
+            $formData['cover_image'] = $path;
+        }
+
+        //Create new Profile
+        Profile::create($formData);
+
+        return redirect()->route('admin.profile')
+            ->with('success', 'Profile created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(c $c)
+    public function show()
     {
         //
     }
@@ -43,24 +67,48 @@ class AdminProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(c $c)
+    public function edit(string $id)
     {
-        //
+        $profile = Profile::findOrFail($id);
+        return view('admin.profile_edit', ['profile' => $profile]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, c $c)
+    public function update(Request $request, $id)
     {
-        //
+        $profile = Profile::findOrFail($id);
+
+        $formData = $request->validate([
+            'is_published' => 'required|boolean',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'company_name' => 'required|string|max:255',
+            'subtitle' => 'required|string',
+            'body' => 'required|string',
+            'job_titles' => 'required|string',
+            'programming_skills' => 'required|string',
+            'webdev_tools' => 'required|string',
+            'soft_skills' => 'required|string',
+            'cover_image' => 'sometimes|file|image|max:5000',
+        ]);
+        if($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('profile_images', options:'public');
+            $formData['cover_image'] = $path;
+        }
+        $profile->update($formData);
+        return redirect()->route('admin.profile')
+            ->with('success', 'Profile updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(c $c)
+    public function destroy(string $id)
     {
-        //
+        $profile = Profile::destroy($id);
+        return redirect()->route('admin.profile')
+            ->with('success', 'Profile deleted successfully!');
     }
 }

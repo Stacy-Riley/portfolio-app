@@ -17,9 +17,8 @@
     </head>
 
     <body>
-        @yield('custom_styles')
+        @yield('admin_custom_styles')
         @include('partials.assets.admin_styles')
-        @include('partials.assets.admin_summernote')
 
         <!-- Page Content -->
         <main>
@@ -28,7 +27,7 @@
         </main>
 
         @include('partials.assets.admin_scripts')
-        @yield('custom_scripts')
-        @yield('scripts')
+        @yield('admin_custom_scripts')
+
     </body>
 </html>

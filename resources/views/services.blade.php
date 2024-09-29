@@ -12,6 +12,7 @@
                 <div class="service_list w-full">
                     <ul class="flex flex-wrap ml-[-40px]">
                         @foreach($services as $service)
+                            @if($service->is_published)
                             <li class="w-1/3 pl-[40px] mb-[40px] wow fadeInLeft" data-wow-duration="1s">
                                 <div class="list_inner w-full h-full relative bg-[#f7f7f7] py-[50px] px-[50px]">
 
@@ -23,18 +24,14 @@
                                             @endphp
                                             @foreach($listServicesArray as $listService)
                                             <li class="w-full mb-[5px] relative pl-[18px]">
-                                                <span>{{ trim($listService) }}</span>
+                                                <span>{!! trim($listService) !!}</span>
                                             </li>
                                             @endforeach
                                         </ul>
                                     </div>
-{{--                                    <div class="erling_progress">--}}
-{{--                                        <div class="progress_inner" data-value="100">--}}
-{{--                                            <div class="background"><div class="bar"><div class="bar_in"></div></div></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                 </div>
                             </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>

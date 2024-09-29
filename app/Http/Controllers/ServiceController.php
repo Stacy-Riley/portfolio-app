@@ -12,7 +12,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::get();
+        $services = Service::orderBy('priority')
+        ->get();
 
         return view('services')
             ->with('services', $services);

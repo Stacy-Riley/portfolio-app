@@ -4,7 +4,8 @@
 
     <!-- ABOUT -->
 @foreach($profiles as $profile)
-    <div class="erling_tm_section w-full h-auto clear-both clearfix" id="about">
+    @if($profile->is_published)
+        <div class="erling_tm_section w-full h-auto clear-both clearfix" id="about">
         <div class="erling_tm_about w-full bg-[#f7f7f7] py-[143px]">
             <div class="container">
                 <div class="about_inner w-full flex">
@@ -98,6 +99,7 @@
             </div>
         </div>
     </div>
+    @endif
 @endforeach
     <!-- /ABOUT -->
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class AdminTestimonialController extends Controller
@@ -10,9 +11,23 @@ class AdminTestimonialController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function reorder(Request $request)
+    {
+        $sortedIDs = $request->input('sortedIDs');
+
+
+        foreach ($sortedIDs as $index => $id) {
+            Testimonial::where('id', $id)->update(['priority' => $index + 1]);
+        }
+
+        return response()->json(['success' => 'The testimonial has been reordered successfully!']);
+
+    }
     public function index()
     {
-        return view('admin.testimonial_index');
+        $testimonials = Testimonial::orderBy('priority', 'asc')->get();
+        return view('admin.testimonial_index')
+            ->with('testimonials', $testimonials);
     }
 
     /**
@@ -20,7 +35,7 @@ class AdminTestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.testimonial_create');
     }
 
     /**
@@ -28,7 +43,15 @@ class AdminTestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->validate([
+            'author' => 'required | string',
+            'body' => 'required | string',
+            'job_title' => 'required | string',
+            'is_published' => 'required | boolean',
+        ]);
+        Testimonial::create($formData);
+        return redirect('/admin/testimonial')
+            ->with('success', 'Testimonial has been added successfully!');
     }
 
     /**
@@ -44,7 +67,9 @@ class AdminTestimonialController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $testimonial = Testimonial::findOrFail($id);
+        return view('admin.testimonial_edit')
+            ->with('testimonial', $testimonial);
     }
 
     /**
@@ -52,7 +77,16 @@ class AdminTestimonialController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $testimonial = Testimonial::findOrFail($id);
+        $formData = $request->validate([
+            'author' => 'required | string',
+            'body' => 'required | string',
+            'job_title' => 'required | string',
+            'is_published' => 'required | boolean',
+        ]);
+        $testimonial->update($formData);
+        return redirect('/admin/testimonial')
+            ->with('success', 'Testimonial has been updated successfully!');
     }
 
     /**
@@ -60,6 +94,8 @@ class AdminTestimonialController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $testimonial = Testimonial::destroy($id);
+        return redirect('/admin/testimonial')
+            ->with('success', 'Testimonial has been deleted successfully!');
     }
 }

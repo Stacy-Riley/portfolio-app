@@ -28,12 +28,12 @@
 }
 
 .admin-form-button {
-    border: 1px solid #102E96;
+    border: 1px solid #F6BDC0;
     border-radius: 5px;
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
-    color: white;
-    background-color: #102E96;
+    color: #000000;
+    background-color: #EBC8CA;
     width: 150px;
 }
 
@@ -111,4 +111,10 @@ table.dataTable td.dt-type-numeric {
         margin-left: 20.833333%; /* (2.5 / 12) * 100 */
     }
 
+}
+
+.admin-published-header {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
 }

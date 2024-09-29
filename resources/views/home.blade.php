@@ -8,6 +8,7 @@
     <!-- /PRELOADER -->
     <!-- HERO -->
     @foreach($profiles as $profile)
+        @if($profile->is_published)
     <div class="erling_tm_section w-full h-auto clear-both clearfix" id="home">
         <div class="erling_tm_hero w-full min-h-[100vh] relative">
             <div class="container">
@@ -30,6 +31,7 @@
             </div>
         </div>
     </div>
+    @endif
     @endforeach
     <!-- /HERO -->
 @endsection

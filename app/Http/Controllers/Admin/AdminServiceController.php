@@ -3,16 +3,33 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class AdminServiceController extends Controller
 {
+    public function reorder(Request $request)
+    {
+        $sortedIDs = $request->input('sortedIDs');
+
+
+        foreach ($sortedIDs as $index => $id) {
+            Service::where('id', $id)->update(['priority' => $index + 1]);
+        }
+
+        return response()->json(['success' => 'The service has been reordered successfully!']);
+
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.service_index');
+        $services = Service::orderBy('priority', 'asc')
+            ->get();
+
+        return view('admin.service_index')
+            ->with('services', $services);
     }
 
     /**
@@ -20,7 +37,8 @@ class AdminServiceController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.service_create');
     }
 
     /**
@@ -28,7 +46,15 @@ class AdminServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->validate([
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'is_published' => 'required|boolean',
+        ]);
+
+        Service::create($formData);
+        return redirect()->route('admin.service')
+            ->with('success', 'The service has been added successfully!');
     }
 
     /**
@@ -44,7 +70,8 @@ class AdminServiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $service = Service::findOrFail($id);
+        return view('admin.service_edit')->with('service', $service);
     }
 
     /**
@@ -52,7 +79,15 @@ class AdminServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $service = Service::findOrFail($id);
+        $formData = $request->validate([
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'is_published' => 'required|boolean',
+        ]);
+        $service->update($formData);
+        return redirect()->route('admin.service')
+            ->with('success', 'The service has been updated successfully!');
     }
 
     /**
@@ -60,6 +95,8 @@ class AdminServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $service = Service::destroy($id);
+        return redirect()->route('admin.service')
+            ->with('success', 'The service has been deleted successfully!');
     }
 }
