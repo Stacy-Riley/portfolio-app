@@ -62,6 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::put('admin/project/update/{id}', [AdminProjectController::class, 'update'])->name('admin.project.update');
     Route::delete('admin/project/delete/{id}', [AdminProjectController::class, 'destroy'])->name('admin.project.delete');
     Route::post('/admin/project/reorder', [AdminProjectController::class, 'reorder'])->name('admin.project.reorder');
+
     //Admin Testimonials
     Route::get('admin/testimonial', [AdminTestimonialController::class, 'index'])->name('admin.testimonial');
     Route::get('admin/testimonial/create', [AdminTestimonialController::class, 'create'])->name('admin.testimonial.create');
@@ -81,10 +82,7 @@ Route::middleware('auth')->group(function () {
 
     //Admin Contact
     Route::get('admin/contact', [AdminContactController::class, 'index'])->name('admin.contact');
-    Route::get('admin/contact/create', [AdminContactController::class, 'create'])->name('admin.contact.create');
-    Route::post('admin/contact/store', [AdminContactController::class, 'store'])->name('admin.contact.store');
-    Route::get('admin/contact/edit/{id}', [AdminContactController::class, 'edit'])->name('admin.contact.edit');
-    Route::put('admin/contact/update/{id}', [AdminContactController::class, 'update'])->name('admin.contact.update');
+    Route::get('admin/contact/show/{id}', [AdminContactController::class, 'show'])->name('admin.contact.show');
     Route::delete('admin/contact/delete/{id}', [AdminContactController::class, 'destroy'])->name('admin.contact.delete');
 });
 

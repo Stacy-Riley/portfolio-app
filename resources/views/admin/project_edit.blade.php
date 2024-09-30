@@ -9,6 +9,13 @@
                     <h1 class="text-center ml-4 mt-5">Edit Project</h1>
                 </div>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>@endif
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
                     <form action="{{ route('admin.project.update', $project->id) }}" method="POST" enctype="multipart/form-data">
@@ -48,7 +55,7 @@
                                 </div>
                                 <div class="col-12 col-md-4 p-0 m-0 mb-3">
                                     <label class="form-label">Code URL</label>
-                                    <input type="text" class="form-control" name="code_url" value="{{ $project->code_url }}" required>
+                                    <input type="text" class="form-control" name="code_url" value="{{ $project->code_url }}">
                                 </div>
                                 <div class="col-12 col-md-2 p-0 m-0 mb-3">
                                     <label class="form-label">Completion Date</label>

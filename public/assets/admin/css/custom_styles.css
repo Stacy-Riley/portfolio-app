@@ -57,12 +57,14 @@
 
 .admin-logout-button {
     border-radius: 5px;
-    padding: 6px;
+    padding: 10px;
     margin-top: 40px;
     margin-left: auto;
     margin-right: auto;
     background-color: #a1a0a0;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    border: none;
+    font-weight: bold;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .admin-logout-button:active {

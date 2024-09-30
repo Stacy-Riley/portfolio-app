@@ -13,22 +13,28 @@
                 <div class="news_list w-full">
                     <ul class="ml-[-40px] flex flex-wrap">
                         @foreach($blogs as $blog)
-                            {{--  Images must be sized to 1300px width x 850px height before uploading--}}
                             @php
                                 $isOldImage = Str::startsWith($blog->cover_image, '/assets/images/blog');
                             @endphp
                         <li class="mb-[40px] pl-[40px] w-1/3 wow fadeInLeft" data-wow-duration="1s">
                             <div class="list_inner w-full h-full clear-both relative">
                                 <div class="image relative mb-[10px] overflow-hidden">
-                                    <img class="relative min-w-full opacity-0" src="{{asset($blog->cover_image)}}" alt="" />
-                                    <div class="main absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300" data-img-url="{{asset($blog->cover_image)}}"></div>
-                                    <span class="date absolute z-[1] top-[20px] left-[20px] bg-white inline-block py-[5px] px-[20px]">{{ $blog->publish_date }}</span>
+                                    @if($isOldImage)
+                                        <img class="relative min-w-full opacity-0" src="{{asset($blog->cover_image)}}" alt="{{ $blog->title }}"/>
+                                        <div class="main absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300" data-img-url="{{asset($blog->cover_image)}}"></div>
+                                    @else
+                                        <img class="relative min-w-full opacity-0" src="{{ Storage::url($blog->cover_image) }}" alt="{{ $blog->title }}"/>
+                                        <div class="main absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300" data-img-url="{{ Storage::url($blog->cover_image) }}" ></div>
+                                    @endif
+                                        <span class="date absolute z-[1] top-[20px] left-[20px] bg-white inline-block py-[5px] px-[20px]">{{ $blog->publish_date }}</span>
                                     <a class="erling_tm_full_link" href="#"></a>
                                 </div>
                                 <div class="details w-full bg-[#f5f5f5]">
                                     <div class="meta w-full bg-[#eaeaea] px-[30px] py-[15px] flex items-center">
+                                        @if($blog->author)
                                         <span>By: </span><span class="admin">{{ $blog->author }}</span>
                                         <span>|</span>
+                                        @endif
                                         <span>In: </span><span class="category">{{ $blog->category }}</span>
                                     </div>
                                     <div class="title blog-title-container w-full p-[30px]">

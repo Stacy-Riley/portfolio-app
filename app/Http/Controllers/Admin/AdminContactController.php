@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class AdminContactController extends Controller
@@ -12,7 +13,11 @@ class AdminContactController extends Controller
      */
     public function index()
     {
-        return view('admin.contact_index');
+        $contacts = Contact::orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.contact_index')
+            ->with('contacts', $contacts);
     }
 
     /**
@@ -36,7 +41,9 @@ class AdminContactController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $contact = Contact::findOrFail($id);
+        return view('admin.contact_show')
+            ->with('contact', $contact);
     }
 
     /**
@@ -60,6 +67,8 @@ class AdminContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $contact = Contact::destroy($id);
+        return redirect()->route('admin.contact')
+            ->with('success', 'Contact was deleted successfully');
     }
 }

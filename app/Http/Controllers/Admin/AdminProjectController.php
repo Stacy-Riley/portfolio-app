@@ -52,7 +52,7 @@ class AdminProjectController extends Controller
             'cover_image' => 'sometimes|file|image|max:5000',
             'publish_date' => 'required|date',
             'project_url' => 'required|url',
-            'code_url' => 'required|url',
+            'code_url' => 'nullable|url',
             'is_published' => 'required|boolean',
         ]);
 
@@ -101,7 +101,7 @@ class AdminProjectController extends Controller
             'cover_image' => 'sometimes|file|image|max:5000',
             'publish_date' => 'required|date',
             'project_url' => 'required|url',
-            'code_url' => 'required|url',
+            'code_url' => 'nullable|url',
             'is_published' => 'required|boolean',
         ]);
         if ($request->hasFile('cover_image')) {

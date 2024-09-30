@@ -43,11 +43,11 @@
                                         @csrf
                                         <ul>
                                             <li>
-                                                <input type="text" placeholder="Name" name="name" class="cf-form-control"/>
+                                                <input type="text" placeholder="Name" name="name" class="cf-form-control" required/>
                                                 <span></span>
                                             </li>
                                             <li>
-                                                <input type="email" placeholder="Email" name="email" class="cf-form-control" />
+                                                <input type="email" placeholder="Email" name="email" class="cf-form-control" required/>
                                                 <span></span>
                                             </li>
                                             <li>
@@ -55,7 +55,7 @@
                                                 <span></span>
                                             </li>
                                             <li>
-                                                <select name="subject" class="cf-form-control">
+                                                <select name="subject" class="cf-form-control required">
                                                     <option value="Choose Services">Choose Service</option>
                                                     <option value="Custom Website Development">Custom Website Development</option>
                                                     <option value="Web Application Development">Web Application Development</option>
@@ -92,7 +92,7 @@
     <!-- /CONTACT -->
 @endsection
 
-@section('scripts')
+@section('custom_scripts')
     {{--Sweetalert for newsletter signup popups--}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -106,6 +106,8 @@
                     icon: 'success',
                     title: 'Success!',
                     text: successMessage,
+                    confirmButtonColor: '#A5DC86',
+                    confirmButtonText: 'OK'
                 }).then(() => {
                     window.scrollTo(0, 0);
                 });
@@ -116,6 +118,8 @@
                     icon: 'error',
                     title: 'Oops...',
                     text: errorMessage,
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'OK'
                 }).then(() => {
                     window.scrollTo(0, 0);
                 });

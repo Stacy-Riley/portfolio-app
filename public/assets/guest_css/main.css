@@ -2061,8 +2061,19 @@ h6 {
 }
 
 .overflow-hidden {
-  overflow: hidden;
+    aspect-ratio: 13 / 8.5;
+    width: 100%;
+    overflow: hidden;
 }
+.overflow-hidden img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*@media (max-width: 768px) {*/
+/*    .overflow-hidden img {*/
+/*        object-fit: contain;*/
+/*    }*/
 
 .overflow-clip {
   overflow: clip;
