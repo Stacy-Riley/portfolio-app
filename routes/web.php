@@ -27,15 +27,8 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contactForm')->middleware('throttle:5,1');
 
 
-Route::get('/dashboard', function () {
-    return view('/admin/home');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/dashboard', [AdminHomeController::class, 'index'])->name('admin.dashboard');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [AdminHomeController::class, 'show'])->name('dashboard');
 
     //Admin Homepage profiles
     Route::get('/admin/profile', [AdminProfileController::class, 'index'])->name('admin.profile');

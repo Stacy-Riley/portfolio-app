@@ -9,13 +9,6 @@
                     <h1 class="text-center ml-4 mt-5">New Project</h1>
                 </div>
             </div>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>@endif
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
                     <form action="{{ route('admin.project.store') }}" method="POST" enctype="multipart/form-data">

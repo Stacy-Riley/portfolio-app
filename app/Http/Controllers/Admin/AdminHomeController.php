@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class AdminHomeController extends Controller
 {
@@ -34,9 +35,21 @@ class AdminHomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $response = Http::get('https://zenquotes.io/api/today');
+
+        if ($response->successful()) {
+            $quoteData = $response->json();
+
+            $quote = $quoteData[0]['q'];
+            $author = $quoteData[0]['a'];
+
+            return view('admin/home', compact('quote', 'author'));
+        }
+
+        return view('admin/home')
+            ->with('error', 'Failed to load quote of the day.');
     }
 
     /**
