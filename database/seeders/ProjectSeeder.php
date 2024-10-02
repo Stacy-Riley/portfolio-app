@@ -182,7 +182,6 @@ class ProjectSeeder extends Seeder
                 'code_url' => 'https://github.com/Stacy-Riley/tech-retreat?tab=readme-ov-file#readme'
             ],
             [
-                'user_id' => 1,
                 'is_published' => true,
                 'priority' => 4,
                 'slug' => 'project-4',
