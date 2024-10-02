@@ -16,7 +16,6 @@ class BlogSeeder extends Seeder
     {
         $blogs = [
             [
-                'user_id' => 1,
                 'is_published' => true,
                 'priority' => 1,
                 'slug' => 'project-1',
@@ -44,7 +43,6 @@ class BlogSeeder extends Seeder
                 'publish_date' => Carbon::parse('June 15, 2024')
             ],
             [
-                'user_id' => 1,
                 'is_published' => true,
                 'priority' => 2,
                 'slug' => 'project-2',
@@ -74,7 +72,6 @@ class BlogSeeder extends Seeder
                 'publish_date' => Carbon::parse('August 18, 2024')
             ],
             [
-                'user_id' => 1,
                 'is_published' => true,
                 'priority' => 3,
                 'slug' => 'project-3',
