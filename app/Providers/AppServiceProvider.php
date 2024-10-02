@@ -21,13 +21,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        DB::listen(function($query) {
-            if ($query->time > 100) {  // Adjust the threshold to what you consider "slow" (in milliseconds)
-                Log::info('Slow query detected: ' . $query->sql, [
-                    'bindings' => $query->bindings,
-                    'time' => $query->time,
-                ]);
-            }
-        });
+//        DB::listen(function($query) {
+//            if ($query->time > 100) {  // Adjust the threshold to what you consider "slow" (in milliseconds)
+//                Log::info('Slow query detected: ' . $query->sql, [
+//                    'bindings' => $query->bindings,
+//                    'time' => $query->time,
+//                ]);
+//            }
+//        });
     }
 }
