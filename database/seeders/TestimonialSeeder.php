@@ -39,6 +39,6 @@ class TestimonialSeeder extends Seeder
                 'publish_date' => null
             ],
         ];
-        db::table('testimonials')->insert($testimonials);
+        db::table('testimonials')->truncate($testimonials);
     }
 }

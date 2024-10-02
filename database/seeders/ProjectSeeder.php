@@ -233,6 +233,6 @@ class ProjectSeeder extends Seeder
                 'code_url' => null
             ],
         ];
-        DB::table('projects')->insert($projects);
+        DB::table('projects')->truncate($projects);
     }
 }

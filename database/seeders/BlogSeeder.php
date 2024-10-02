@@ -105,7 +105,7 @@ class BlogSeeder extends Seeder
             ],
         ];
 
-        db::table('blogs')->insert($blogs);
+        db::table('blogs')->truncate($blogs);
     }
 
 }
