@@ -90,13 +90,14 @@ return [
          * Laravel Framework Service Providers...
          */
         Illuminate\View\ViewServiceProvider::class,
-
+        Illuminate\Database\DatabaseServiceProvider::class,
         // More Service Providers...
     ],
     'aliases' => [
         // Other Facades...
 
         'View' => Illuminate\Support\Facades\View::class,
+        'DB' => Illuminate\Support\Facades\DB::class,
 
         // More Facades...
     ],
