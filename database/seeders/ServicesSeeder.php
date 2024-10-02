@@ -36,6 +36,6 @@ class ServicesSeeder extends Seeder
                 'body' => 'Regular updates to ensure security and performance, Troubleshooting and bug fixes for smooth operation, Content updates and design tweaks as your business evolves, Fast and reliable support when you need it'
             ],
         ];
-        db::table('services')->truncate($services);
+        db::table('services')->insert($services);
     }
 }

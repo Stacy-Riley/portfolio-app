@@ -35,7 +35,7 @@ class ProfileSeeder extends Seeder
                 'supporting_images' => ''
             ]
         ];
-        DB::table('profiles')->truncate($profiles);
+        DB::table('profiles')->insert($profiles);
     }
 }
 
