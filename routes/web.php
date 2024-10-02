@@ -16,6 +16,10 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/body', function () {
+    return response()->json(['message' => 'This is a temporary body route.']);
+});
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/services', [ServiceController::class, 'index'])->name('services');
