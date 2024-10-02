@@ -16,7 +16,6 @@ class ProjectSeeder extends Seeder
     {
         $projects = [
             [
-                'user_id' => 1,
                 'is_published' => true,
                 'priority' => 1,
                 'slug' => 'project-1',
@@ -73,7 +72,6 @@ class ProjectSeeder extends Seeder
                 'code_url' => null
             ],
             [
-                'user_id' => 1,
                 'is_published' => true,
                 'priority' => 2,
                 'slug' => 'project-2',
@@ -129,7 +127,6 @@ class ProjectSeeder extends Seeder
                 'code_url' => 'https://github.com/Stacy-Riley/art-gallery-website?tab=readme-ov-file#readme'
             ],
             [
-                'user_id' => 1,
                 'is_published' => true,
                 'priority' => 3,
                 'slug' => 'project-3',
