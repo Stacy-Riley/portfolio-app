@@ -31,7 +31,6 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 // Handle form submission with rate limiting to deter spam to contact form
 Route::post('/contact', [ContactController::class, 'store'])->name('contactForm')->middleware('throttle:5,1');
 
-Auth::routes(['reset' => true]);  // Ensures password reset routes are enabled
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [AdminHomeController::class, 'show'])->name('dashboard');
