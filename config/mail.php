@@ -95,6 +95,8 @@ return [
             ],
         ],
 
+        'driver' => env('MAIL_MAILER', 'smtp'),
+
     ],
 
     /*
