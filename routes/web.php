@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/body', function () {
@@ -30,6 +31,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 // Handle form submission with rate limiting to deter spam to contact form
 Route::post('/contact', [ContactController::class, 'store'])->name('contactForm')->middleware('throttle:5,1');
 
+Auth::routes(['reset' => true]);  // Ensures password reset routes are enabled
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [AdminHomeController::class, 'show'])->name('dashboard');
