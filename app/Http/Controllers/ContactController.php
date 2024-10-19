@@ -36,9 +36,9 @@ class ContactController extends Controller
             'message' => 'required|string|max:255',
         ]);
 
-        if ($request->has('my_extra_field') && !empty($request->my_extra_field)) {
-            // It's a bot, reject the form submission
-            return redirect()->back()->with('error', 'Bot detected!');
+        if ($request->has('preferred_contact_method') && !empty($request->my_extra_field)) {
+            // It's a bot, reject the form submission with a fake success message, won't be stored n db
+            return redirect()->back()->with('success', 'Your message has been sent successfully!');
         }
 
         Contact::create($formData);

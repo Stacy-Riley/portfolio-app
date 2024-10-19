@@ -67,7 +67,7 @@
                                                 <textarea placeholder="Message" name="message" class="cf-form-control"></textarea>
                                             </li>
                                             <li>
-                                                <input type="text" name="my_extra_field" style="display:none" value="">
+                                                <input type="text" name="preferred_contact_method" style="display:none" value="">
                                             </li>
                                         </ul>
                                         <div class="erling_tm_button">
