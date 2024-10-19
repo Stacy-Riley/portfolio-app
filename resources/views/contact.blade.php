@@ -3,10 +3,15 @@
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();  // Prevent immediate form submission
+            console.log('Form submission intercepted.');
 
             // Execute reCAPTCHA v3
             grecaptcha.ready(function() {
+                console.log('reCAPTCHA is ready.');
+
                 grecaptcha.execute('{{ env('NOCAPTCHA_SITEKEY') }}', {action: 'contactForm'}).then(function(token) {
+                    console.log('reCAPTCHA token generated:', token);
+
                     // Add the token to the form
                     var recaptchaResponse = document.createElement('input');
                     recaptchaResponse.setAttribute('type', 'hidden');
@@ -15,10 +20,12 @@
                     document.getElementById('contactForm').appendChild(recaptchaResponse);
 
                     // Now submit the form
+                    console.log('Submitting the form...');
                     document.getElementById('contactForm').submit();
                 });
             });
         });
+
     </script>
 @endsection
     @section('content')

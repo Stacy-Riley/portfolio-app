@@ -47,22 +47,27 @@ function erling_tm_modalbox(){
 // -------------------------------------------------
 
 function erling_tm_nav_bg(){
+    "use strict";
 
-	"use strict";
+    // Define the scroll event
+    jQuery(window).on('scroll', function(){
+        var menu = jQuery('.erling_tm_header');
+        var progress = jQuery('.progressbar');
 
-	jQuery(window).on('scroll',function(){
-		var menu	 		= jQuery('.erling_tm_header');
-		var progress	 	= jQuery('.progressbar');
+        // Define WinOffset as the vertical scroll position
+        var WinOffset = jQuery(window).scrollTop(); // or window.pageYOffset
 
-		if(WinOffset >= 100){
-			menu.addClass('animate');
-			progress.addClass('animate');
-		}else{
-			menu.removeClass('animate');
-			progress.removeClass('animate');
-		}
-	});
+        // Now use WinOffset to toggle the 'animate' class
+        if(WinOffset >= 100){
+            menu.addClass('animate');
+            progress.addClass('animate');
+        }else{
+            menu.removeClass('animate');
+            progress.removeClass('animate');
+        }
+    });
 }
+
 
 // -------------------------------------------------
 // -------------  PROGRESS BAR  --------------------
