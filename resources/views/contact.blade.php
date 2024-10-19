@@ -91,8 +91,6 @@
             </div>
         </div>
     </div>
-    <!-- Google reCAPTCHA render script -->
-    {!! NoCaptcha::renderJs('contactForm') !!}
     <!-- /CONTACT -->
 @endsection
 
