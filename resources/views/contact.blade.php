@@ -1,6 +1,8 @@
 @extends('layouts.public')
 @section('custom_scripts')
+    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
     <script>
+
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             event.preventDefault();  // Prevent immediate form submission
             console.log('Form submission intercepted.');
