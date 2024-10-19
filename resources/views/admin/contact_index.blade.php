@@ -56,9 +56,9 @@
                                             <form action="{{ route('admin.contact.delete', [$contact->id]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn" aria-label="delete contact" onclick="if(confirm('Are you sure you want to delete this contact?')) {this.form.submit();} else { return false;}">
+                                                <button class="btn" type="submit" onclick="return confirm('Are you sure you want to delete this contact?')" aria-label="delete contact">
                                                     Delete
-                                                </a>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
