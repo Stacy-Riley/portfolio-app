@@ -1,8 +1,5 @@
 @extends('layouts.public')
-@section('admin_custom_scripts')
-    <!-- Render the reCAPTCHA v3 JavaScript with the action name 'contactForm' -->
-    {!! NoCaptcha::renderJs('contactForm') !!}
-@endsection
+
 @section('content')
     <!-- CONTACT -->
     <div class="erling_tm_section w-full h-auto clear-both clearfix" id="contact">
@@ -92,6 +89,8 @@
             </div>
         </div>
     </div>
+    <!-- Google reCAPTCHA render script -->
+    {!! NoCaptcha::renderJs('contactForm') !!}
     <!-- /CONTACT -->
 @endsection
 
