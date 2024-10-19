@@ -29,8 +29,9 @@
                                 <thead class="border-2">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Subject</th>
                                     <th>Received Date</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -41,28 +42,24 @@
                                             {{$contact->name}}
                                         </td>
                                         <td>
-                                            {{$contact->email}}
+                                            {{$contact->subject}}
                                         </td>
                                         <td>
                                             {{ \Carbon\Carbon::parse($contact->created_at)->format('m/d/Y') }}
                                         </td>
                                         <td >
-                                        <span class="dropdown">
-                                            <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
-                                              <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{ route('admin.contact.show', $contact->id) }}" aria-label="edit contact">
-                                                  View
+                                            <a class="btn" href="{{ route('admin.contact.show', $contact->id) }}" aria-label="view contact">
+                                              View
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('admin.contact.delete', [$contact->id]) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a class="btn" aria-label="delete contact" onclick="if(confirm('Are you sure you want to delete this contact?')) {this.form.submit();} else { return false;}">
+                                                    Delete
                                                 </a>
-
-                                                  <form action="{{route('admin.contact.delete',[$contact->id])}}" method="POST">
-                                                      @method('DELETE')
-                                                      @csrf
-                                                         <button class="dropdown-item" type="submit" onclick="if (!confirm('Are you sure you want to delete this contact?')) { return false }" aria-label="delete contact">
-                                                             Delete
-                                                         </button>
-                                                  </form>
-                                              </div>
-                                        </span>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
