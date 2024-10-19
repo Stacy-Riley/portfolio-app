@@ -2,33 +2,38 @@
 @section('custom_scripts')
     <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
     <script>
-
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();  // Prevent immediate form submission
-            console.log('Form submission intercepted.');
-
-            // Execute reCAPTCHA v3
-            grecaptcha.ready(function() {
-                console.log('reCAPTCHA is ready.');
-
-                grecaptcha.execute('{{ env('NOCAPTCHA_SITEKEY') }}', {action: 'contactForm'}).then(function(token) {
-                    console.log('reCAPTCHA token generated:', token);
-
-                    // Add the token to the form
-                    var recaptchaResponse = document.createElement('input');
-                    recaptchaResponse.setAttribute('type', 'hidden');
-                    recaptchaResponse.setAttribute('name', 'g-recaptcha-response');
-                    recaptchaResponse.setAttribute('value', token);
-                    document.getElementById('contactForm').appendChild(recaptchaResponse);
-
-                    // Now submit the form
-                    console.log('Submitting the form...');
-                    document.getElementById('contactForm').submit();
-                });
-            });
-        });
-
+        function onSubmit(token) {
+            document.getElementById('contactForm').submit();
+        }
     </script>
+{{--    <script>--}}
+
+{{--        document.getElementById('contactForm').addEventListener('submit', function(event) {--}}
+{{--            event.preventDefault();  // Prevent immediate form submission--}}
+{{--            console.log('Form submission intercepted.');--}}
+
+{{--            // Execute reCAPTCHA v3--}}
+{{--            grecaptcha.ready(function() {--}}
+{{--                console.log('reCAPTCHA is ready.');--}}
+
+{{--                grecaptcha.execute('{{ env('NOCAPTCHA_SITEKEY') }}', {action: 'contactForm'}).then(function(token) {--}}
+{{--                    console.log('reCAPTCHA token generated:', token);--}}
+
+{{--                    // Add the token to the form--}}
+{{--                    var recaptchaResponse = document.createElement('input');--}}
+{{--                    recaptchaResponse.setAttribute('type', 'hidden');--}}
+{{--                    recaptchaResponse.setAttribute('name', 'g-recaptcha-response');--}}
+{{--                    recaptchaResponse.setAttribute('value', token);--}}
+{{--                    document.getElementById('contactForm').appendChild(recaptchaResponse);--}}
+
+{{--                    // Now submit the form--}}
+{{--                    console.log('Submitting the form...');--}}
+{{--                    document.getElementById('contactForm').submit();--}}
+{{--                });--}}
+{{--            });--}}
+{{--        });--}}
+
+{{--    </script>--}}
 @endsection
     @section('content')
     <!-- CONTACT -->
@@ -101,7 +106,15 @@
                                             </li>
                                         </ul>
                                         <div class="erling_tm_button">
-                                            <button type="submit" id="send_message" href="#">Send Message</button>
+                                            <button class="g-recaptcha"
+                                                    data-sitekey="reCAPTCHA_site_key"
+                                                    data-callback='onSubmit'
+                                                    data-action='submit'
+                                                    type="submit"
+                                                    id="send_message"
+                                                    href="#" >
+                                                Send Message
+                                            </button>
                                         </div>
                                     </form>
                                     @if(session('success'))
