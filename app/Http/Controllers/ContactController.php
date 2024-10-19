@@ -34,9 +34,10 @@ class ContactController extends Controller
             'phone' => 'sometimes|nullable|regex:/^[0-9+\-\(\)\s]*$/',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:255',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
-        if ($request->has('preferred_contact_method') && !empty($request->my_extra_field)) {
+        if ($request->has('preferred_contact_method') && !empty($preferred_contact_method)) {
             // It's a bot, reject the form submission with a fake success message, won't be stored n db
             return redirect()->back()->with('success', 'Your message has been sent successfully!');
         }
