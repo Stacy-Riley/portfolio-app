@@ -8,7 +8,7 @@
         // Ensure that grecaptcha is loaded
         if (typeof grecaptcha !== 'undefined') {
             grecaptcha.ready(function() {
-                grecaptcha.execute('{{ env('NOCAPTCHA_SITEKEY') }}', { action: 'contactForm' }).then(function(token) {
+                grecaptcha.execute('{{ env("NOCAPTCHA_SITEKEY") }}', { action: 'contactForm' }).then(function(token) {
                     // Add the reCAPTCHA token to the form
                     var recaptchaResponse = document.createElement('input');  // Correct var usage
                     recaptchaResponse.setAttribute('type', 'hidden');
