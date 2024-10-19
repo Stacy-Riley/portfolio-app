@@ -36,11 +36,6 @@ class ContactController extends Controller
             'message' => 'required|string|max:255',
         ]);
 
-        if ($request->has('preferred_contact_method') && !empty($preferred_contact_method)) {
-            // It's a bot, reject the form submission with a fake success message, won't be stored n db
-            return redirect()->back()->with('success', 'Your message has been sent successfully!');
-        }
-
         Contact::create($formData);
         return redirect()->route('contactForm') // Ensure this matches the route name
         ->with('success', 'Your message has been sent successfully!');

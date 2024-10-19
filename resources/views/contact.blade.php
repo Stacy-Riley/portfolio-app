@@ -41,6 +41,7 @@
                                 <div class="form_wrapper w-full">
                                     <form id="contactForm" action="{{ route('contactForm') }}" method="POST">
                                         @csrf
+                                        @honeypot
                                         <ul>
                                             <li>
                                                 <input type="text" placeholder="Name" name="name" class="cf-form-control" required/>
@@ -65,9 +66,6 @@
                                             </li>
                                             <li id="text-area-w">
                                                 <textarea placeholder="Message" name="message" class="cf-form-control"></textarea>
-                                            </li>
-                                            <li>
-                                                <input type="text" name="preferred_contact_method" style="display:none" value="">
                                             </li>
                                         </ul>
                                         <div class="erling_tm_button">
