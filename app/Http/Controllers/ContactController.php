@@ -34,7 +34,6 @@ class ContactController extends Controller
             'phone' => 'sometimes|nullable|regex:/^[0-9+\-\(\)\s]*$/',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:255',
-            'g-recaptcha-response' => 'required|captcha',
         ]);
 
         if ($request->has('preferred_contact_method') && !empty($preferred_contact_method)) {

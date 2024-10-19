@@ -28,7 +28,7 @@ Route::get('/portfolio', [ProjectController::class, 'index'])->name('portfolio')
 Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials');
 Route::get('/news', [BlogController::class, 'index'])->name('news');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-Route::post('/contact', [ContactController::class, 'store'])->name('contactForm');
+Route::post('/contact', [ContactController::class, 'store'])->name('contactForm')->middleware('throttle:5,1');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
