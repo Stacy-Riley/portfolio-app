@@ -1,6 +1,27 @@
 @extends('layouts.public')
+@section('custom_scripts')
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent immediate form submission
 
-@section('content')
+            // Execute reCAPTCHA v3
+            grecaptcha.ready(function() {
+                grecaptcha.execute('{{ env('NOCAPTCHA_SITEKEY') }}', {action: 'contactForm'}).then(function(token) {
+                    // Add the token to the form
+                    var recaptchaResponse = document.createElement('input');
+                    recaptchaResponse.setAttribute('type', 'hidden');
+                    recaptchaResponse.setAttribute('name', 'g-recaptcha-response');
+                    recaptchaResponse.setAttribute('value', token);
+                    document.getElementById('contactForm').appendChild(recaptchaResponse);
+
+                    // Now submit the form
+                    document.getElementById('contactForm').submit();
+                });
+            });
+        });
+    </script>
+@endsection
+    @section('content')
     <!-- CONTACT -->
     <div class="erling_tm_section w-full h-auto clear-both clearfix" id="contact">
         <div class="erling_tm_contact w-full pt-[143px] px-0 pb-[140px] bg-[#f5f5f5]">

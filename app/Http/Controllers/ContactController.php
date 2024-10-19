@@ -37,7 +37,6 @@ class ContactController extends Controller
             'g-recaptcha-response' => 'required|captcha',
         ]);
 
-
         if ($request->has('preferred_contact_method') && !empty($preferred_contact_method)) {
             // It's a bot, reject the form submission with a fake success message, won't be stored n db
             return redirect()->back()->with('success', 'Your message has been sent successfully!');
