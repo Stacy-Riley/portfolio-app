@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-                    <h1 class="text-center ml-4 mt-5">Services</h1>
+                    <h1 class="text-center ml-4 mt-5">Testimonials</h1>
                 </div>
                 <div class="row">
                     @if(session('success'))
@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5 my-4 p-0">
-                    <a href="/admin/service/create" type="button" class="btn admin-form-button">New Service</a>
+                    <a href="{{ route('testimonials.create') }}" type="button" class="btn admin-form-button">New Testimonial</a>
                 </div>
             </div>
             <div class="row">
@@ -33,26 +33,26 @@
                             <table id="cbsDataTable" class="table card-table table-vcenter text-nowrap datatable">
                                 <thead class="border-2">
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Body</th>
+                                    <th>Author</th>
+                                    <th>Comment</th>
                                     <th>Last Updated</th>
                                     <th>Published</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody id="sortable" class="border-2">
-                                @foreach($services as $index=> $service)
-                                    <tr data-id="{{ $service->id }}">
+                                @foreach($testimonials as $index=> $testimonial)
+                                    <tr data-id="{{ $testimonial->id }}">
                                         <td>
-                                            {{$service->title}}
+                                            {{$testimonial->author}}
                                         </td>
                                         <td>
-                                            {!! Str::limit($service->body, 30, '...') !!}
+                                            {!! Str::limit($testimonial->body, 30, '...') !!}
                                         </td>
                                         <td>
-                                            {{ \Carbon\Carbon::parse($service->updated_at)->format('m/d/Y') }}
+                                            {{ \Carbon\Carbon::parse($testimonial->updated_at)->format('m/d/Y') }}
                                         </td>
-                                        @if($service->is_published == true)
+                                        @if($testimonial->is_published == true)
                                             <td>
                                         <span class="me-1 admin-published-header">
                                             <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="#198754"  class="icon icon-tabler icons-tabler-filled icon-tabler-circle"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 3.34a10 10 0 1 1 -4.995 8.984l-.005 -.324l.005 -.324a10 10 0 0 1 4.995 -8.336z" /></svg>
@@ -67,14 +67,14 @@
                                         <span class="dropdown">
                                             <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
                                               <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{ route('admin.service.edit', $service->id) }}" aria-label="edit service">
+                                                <a class="dropdown-item" href="{{ route('testimonials.edit', [$testimonial->id]) }}" aria-label="edit testimonial">
                                                   Edit
                                                 </a>
 
-                                                  <form action="{{route('admin.service.delete',[$service->id])}}" method="POST">
+                                                  <form action="{{ route('testimonials.delete', [$testimonial->id]) }}" method="POST">
                                                       @method('DELETE')
                                                       @csrf
-                                                         <button class="dropdown-item" type="submit" onclick="if (!confirm('Are you sure you want to delete this service?')) { return false }" aria-label="delete service">
+                                                         <button class="dropdown-item" type="submit" onclick="if (!confirm('Are you sure you want to delete this testimonial?')) { return false }" aria-label="delete testimonial">
                                                              Delete
                                                          </button>
                                                   </form>
@@ -131,7 +131,7 @@
                 update: function(event, ui) {
                     var sortedIDs = $("#sortable").sortable("toArray", { attribute: "data-id" });
                     $.ajax({
-                        url: "{{ route('admin.service.reorder') }}",
+                        url: "{{ route('testimonials.reorder') }}",
                         method: "POST",
                         data: {
                             sortedIDs: sortedIDs,

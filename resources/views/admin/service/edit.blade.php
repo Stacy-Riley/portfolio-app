@@ -6,31 +6,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-                    <h1 class="text-center ml-4 mt-5">New Testimonial</h1>
+                    <h1 class="text-center ml-4 mt-5">Edit Service</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-                    <form action="{{ route('admin.testimonial.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('services.update', [$service->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-
+                        @method('PUT')
                         <div class="row">
-                            <div class="d-flex justify-content-between flex-wrap ">
-                                <div class="col-12 col-md-5 p-0 m-0 mb-3">
-                                    <label class="form-label">Author</label>
-                                    <input type="text" class="form-control" name="author" placeholder="" required>
-                                </div>
-                                <div class="col-12 col-md-5 p-0 m-0 mb-3">
-                                    <label class="form-label">Job Title/Position</label>
-                                    <input type="text" class="form-control" name="job_title" placeholder="" required>
+                            <div class=" mb-4">
+                                <div class="pl-0">
+                                    <label class="form-label">Title</label>
+                                    <input type="text" class="form-control" name="title" value="{{ $service->title }}" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div>
-                                <div class="mb-3">
-                                    <label class="form-label">Comment</label>
-                                    <textarea id="summernote" name="body" ></textarea>
+                                <div class=" mb-3">
+                                    <label class="form-label">Service Content</label>
+                                    <textarea id="summernote" name="body" >
+                                        {!! $service->body !!}
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +37,8 @@
                                 <div class="col-md-3">
                                     <div class="form-label">Publish</div>
                                     <select class="form-select" name="is_published">
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option value="1" {{ $service->is_published == 1 ? 'selected' : '' }}>Yes</option>
+                                        <option value="0" {{ $service->is_published == 0 ? 'selected' : '' }}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -49,7 +47,7 @@
                             <div class="my-5">
                                 <div class="d-flex justify-content-center ">
                                     <div class="mx-4">
-                                        <a href="/admin/testimonial" type="button" class="btn mr-2 admin-form-button"><< Back </a>
+                                        <a href="{{ route('services.index') }}" type="button" class="btn mr-2 admin-form-button"><< Back </a>
                                     </div>
                                     <div class="mx-4">
                                         <input type="submit" value="Save" class="btn ml-2 admin-form-button"/>

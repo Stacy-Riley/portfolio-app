@@ -14,7 +14,7 @@ class AdminBlogController extends Controller
     public function index()
     {
         $blogs = Blog::orderBy('publish_date', 'desc')->paginate(10);
-        return view('admin.blog_index')
+        return view('admin.blog.index')
             ->with('blogs', $blogs);
     }
 
@@ -23,7 +23,7 @@ class AdminBlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog_create');
+        return view('admin.blog.create');
     }
 
     /**
@@ -47,7 +47,7 @@ class AdminBlogController extends Controller
         }
 
         Blog::create($formData);
-        return redirect('/admin/blog')
+        return redirect()->route('blogs.index')
             ->with('success', 'New Blog created successfully!');
     }
 
@@ -65,7 +65,7 @@ class AdminBlogController extends Controller
     public function edit(string $id)
     {
         $blog = Blog::findOrFail($id);
-        return view('admin.blog_edit')
+        return view('admin.blog.edit')
             ->with('blog', $blog);
     }
 
@@ -89,7 +89,7 @@ class AdminBlogController extends Controller
             $formData['cover_image'] = $path;
         }
         $blog->update($formData);
-        return redirect('/admin/blog')
+        return redirect()->route('blogs.index')
             ->with('success', 'Blog updated successfully!');
     }
 
@@ -99,7 +99,7 @@ class AdminBlogController extends Controller
     public function destroy(string $id)
     {
         $blog = Blog::destroy($id);
-        return redirect('/admin/blog')
+        return redirect()->route('blogs.index')
             ->with('success', 'Blog deleted successfully!');
     }
 }

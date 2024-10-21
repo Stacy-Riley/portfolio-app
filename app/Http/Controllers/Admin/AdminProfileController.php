@@ -14,7 +14,7 @@ class AdminProfileController extends Controller
     public function index()
     {
         $profiles = Profile::orderBy('created_at', 'desc')->get();
-        return view('admin.profile_index')
+        return view('admin.profile.index')
             ->with('profiles', $profiles);
     }
 
@@ -23,7 +23,7 @@ class AdminProfileController extends Controller
      */
     public function create()
     {
-        return view('admin.profile_create');
+        return view('admin.profile.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class AdminProfileController extends Controller
         //Create new Profile
         Profile::create($formData);
 
-        return redirect()->route('admin.profile')
+        return redirect()->route('profiles.index')
             ->with('success', 'Profile created successfully!');
     }
 
@@ -70,7 +70,8 @@ class AdminProfileController extends Controller
     public function edit(string $id)
     {
         $profile = Profile::findOrFail($id);
-        return view('admin.profile_edit', ['profile' => $profile]);
+        return view('admin.profile.edit')
+            ->with('profile', $profile);
     }
 
     /**
@@ -98,7 +99,7 @@ class AdminProfileController extends Controller
             $formData['cover_image'] = $path;
         }
         $profile->update($formData);
-        return redirect()->route('admin.profile')
+        return redirect()->route('profiles.index')
             ->with('success', 'Profile updated successfully!');
     }
 
@@ -108,7 +109,7 @@ class AdminProfileController extends Controller
     public function destroy(string $id)
     {
         $profile = Profile::destroy($id);
-        return redirect()->route('admin.profile')
+        return redirect()->route('profiles.index')
             ->with('success', 'Profile deleted successfully!');
     }
 }

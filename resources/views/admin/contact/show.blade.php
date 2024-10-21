@@ -11,8 +11,6 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-{{--                    <form action="{{ route('admin.profile.store') }}" method="POST" enctype="multipart/form-data">--}}
-{{--                        @csrf--}}
                         <div class="row">
                             <div class="d-flex justify-content-between ">
                                 <div class="col-md-4 p-0 m-0 mb-3">
@@ -52,10 +50,10 @@
                             <div class="my-5">
                                 <div class="d-flex justify-content-center ">
                                     <div class="mx-4">
-                                        <a href="/admin/contact" type="button" class="btn mr-2 admin-form-button"><< Back </a>
+                                        <a href="{{ route('contacts.index') }}" type="button" class="btn mr-2 admin-form-button"><< Back </a>
                                     </div>
                                     <div class="mx-4">
-                                        <form action="{{route('admin.contact.delete',[$contact->id])}}" method="POST">
+                                        <form action="{{ route('contacts.delete',[$contact->id]) }}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button class="btn mr-2 admin-form-button" type="submit" onclick="if (!confirm('Are you sure you want to delete this contact?')) { return false }" aria-label="delete contact">
@@ -66,7 +64,6 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

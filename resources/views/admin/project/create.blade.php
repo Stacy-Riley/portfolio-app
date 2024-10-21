@@ -6,33 +6,49 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-                    <h1 class="text-center ml-4 mt-5">New Blog Post</h1>
+                    <h1 class="text-center ml-4 mt-5">New Project</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-                    <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="d-flex justify-content-between flex-wrap ">
                                 <div class="col-12 col-md-5 p-0 m-0 mb-3">
-                                    <label class="form-label">Category</label>
-                                    <input type="text" class="form-control" name="category" placeholder="" required>
+                                    <label class="form-label">Client Name</label>
+                                    <input type="text" class="form-control" name="client" placeholder="" required>
                                 </div>
                                 <div class="col-12 col-md-5 p-0 m-0 mb-3">
-                                    <label class="form-label">Author</label>
-                                    <input type="text" class="form-control" name="author" placeholder="" >
+                                    <label class="form-label">Category</label>
+                                    <input type="text" class="form-control" name="category" placeholder="" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="d-flex justify-content-between flex-wrap ">
-                                <div class="col-12 col-md-9 p-0 m-0 mb-3">
+                                <div class="col-12 col-md-5 p-0 m-0 mb-3">
                                     <label class="form-label">Title</label>
                                     <input type="text" class="form-control" name="title" placeholder="" required>
                                 </div>
+                                <div class="col-12 col-md-5 p-0 m-0 mb-3">
+                                    <label class="form-label">Subtitle</label>
+                                    <input type="text" class="form-control" name="subtitle" placeholder="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="d-flex justify-content-between flex-wrap ">
+                                <div class="col-12 col-md-4 p-0 m-0 mb-3">
+                                    <label class="form-label">Project URL</label>
+                                    <input type="text" class="form-control" name="project_url" placeholder="https://www.example.com" required>
+                                </div>
+                                <div class="col-12 col-md-4 p-0 m-0 mb-3">
+                                    <label class="form-label">Code URL</label>
+                                    <input type="text" class="form-control" name="code_url" placeholder="https://www.example.com">
+                                </div>
                                 <div class="col-12 col-md-2 p-0 m-0 mb-3">
-                                    <label class="form-label">Publish Date</label>
+                                    <label class="form-label">Completion Date</label>
                                     <div class="input-icon mb-2">
                                         <input class="form-control " placeholder="Select a date" id="datepicker-icon" value="" name="publish_date"/>
                                         <span class="input-icon-addon"><!-- Download SVG icon from http://tabler-icons.io/i/calendar -->
@@ -45,7 +61,7 @@
                         <div class="row">
                             <div>
                                 <div class="mb-3">
-                                    <label class="form-label">Upload Cover Image</label>
+                                    <label class="form-label">Upload Cover Image <br>(1300px wide x 850px high)</label>
                                     <input type="file" class="form-control" name="cover_image" placeholder="" required>
                                 </div>
                             </div>
@@ -53,7 +69,7 @@
                         <div class="row">
                             <div>
                                 <div class=" mb-3">
-                                    <label class="form-label">Blog Post Content</label>
+                                    <label class="form-label">Project Description</label>
                                     <textarea id="summernote" name="body" ></textarea>
                                 </div>
                             </div>
@@ -73,7 +89,7 @@
                             <div class="my-5">
                                 <div class="d-flex justify-content-center ">
                                     <div class="mx-4">
-                                        <a href="/admin/blog" type="button" class="btn mr-2 admin-form-button"><< Back </a>
+                                        <a href="{{ route('projects.index') }}" type="button" class="btn mr-2 admin-form-button"><< Back </a>
                                     </div>
                                     <div class="mx-4">
                                         <input type="submit" value="Save" class="btn ml-2 admin-form-button"/>

@@ -23,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5 my-4 p-0">
-                    <a href="/admin/project/create" type="button" class="btn admin-form-button">New Project</a>
+                    <a href="{{ route('projects.create') }}" type="button" class="btn admin-form-button">New Project</a>
                 </div>
             </div>
             <div class="row">
@@ -67,11 +67,11 @@
                                         <span class="dropdown">
                                             <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
                                               <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{ route('admin.project.edit', $project->id) }}" aria-label="edit project">
+                                                <a class="dropdown-item" href="{{ route('projects.edit', $project->id) }}" aria-label="edit project">
                                                   Edit
                                                 </a>
 
-                                                  <form action="{{route('admin.project.delete',[$project->id])}}" method="POST">
+                                                  <form action="{{ route('projects.delete',[$project->id]) }}" method="POST">
                                                       @method('DELETE')
                                                       @csrf
                                                          <button class="dropdown-item" type="submit" onclick="if (!confirm('Are you sure you want to delete this project?')) { return false }" aria-label="delete project">
@@ -131,7 +131,7 @@
                 update: function(event, ui) {
                     var sortedIDs = $("#sortable").sortable("toArray", { attribute: "data-id" });
                     $.ajax({
-                        url: "{{ route('admin.project.reorder') }}",
+                        url: "{{ route('projects.reorder') }}",
                         method: "POST",
                         data: {
                             sortedIDs: sortedIDs,

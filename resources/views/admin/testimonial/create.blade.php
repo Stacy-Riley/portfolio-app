@@ -6,26 +6,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-                    <h1 class="text-center ml-4 mt-5">New Service</h1>
+                    <h1 class="text-center ml-4 mt-5">New Testimonial</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5">
-                    <form action="{{ route('admin.service.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('testimonials.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
-                            <div class=" mb-4">
-                                <div class="pl-0">
-                                    <label class="form-label">Title</label>
-                                    <input type="text" class="form-control" name="title" placeholder="" required>
-                                </div>
 
+                        <div class="row">
+                            <div class="d-flex justify-content-between flex-wrap ">
+                                <div class="col-12 col-md-5 p-0 m-0 mb-3">
+                                    <label class="form-label">Author</label>
+                                    <input type="text" class="form-control" name="author" placeholder="" required>
+                                </div>
+                                <div class="col-12 col-md-5 p-0 m-0 mb-3">
+                                    <label class="form-label">Job Title/Position</label>
+                                    <input type="text" class="form-control" name="job_title" placeholder="" required>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div>
                                 <div class="mb-3">
-                                    <label class="form-label">Service Content</label>
+                                    <label class="form-label">Comment</label>
                                     <textarea id="summernote" name="body" ></textarea>
                                 </div>
                             </div>
@@ -45,7 +49,7 @@
                             <div class="my-5">
                                 <div class="d-flex justify-content-center ">
                                     <div class="mx-4">
-                                        <a href="/admin/service" type="button" class="btn mr-2 admin-form-button"><< Back </a>
+                                        <a href="{{ route('testimonials.index') }}" type="button" class="btn mr-2 admin-form-button"><< Back </a>
                                     </div>
                                     <div class="mx-4">
                                         <input type="submit" value="Save" class="btn ml-2 admin-form-button"/>

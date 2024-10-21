@@ -26,7 +26,7 @@ class AdminTestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::orderBy('priority', 'asc')->get();
-        return view('admin.testimonial_index')
+        return view('admin.testimonial.index')
             ->with('testimonials', $testimonials);
     }
 
@@ -35,7 +35,7 @@ class AdminTestimonialController extends Controller
      */
     public function create()
     {
-        return view('admin.testimonial_create');
+        return view('admin.testimonial.create');
     }
 
     /**
@@ -50,7 +50,7 @@ class AdminTestimonialController extends Controller
             'is_published' => 'required | boolean',
         ]);
         Testimonial::create($formData);
-        return redirect('/admin/testimonial')
+        return redirect()->route('testimonials.index')
             ->with('success', 'Testimonial has been added successfully!');
     }
 
@@ -68,7 +68,7 @@ class AdminTestimonialController extends Controller
     public function edit(string $id)
     {
         $testimonial = Testimonial::findOrFail($id);
-        return view('admin.testimonial_edit')
+        return view('admin.testimonial.edit')
             ->with('testimonial', $testimonial);
     }
 
@@ -85,7 +85,7 @@ class AdminTestimonialController extends Controller
             'is_published' => 'required | boolean',
         ]);
         $testimonial->update($formData);
-        return redirect('/admin/testimonial')
+        return redirect()->route('testimonials.index')
             ->with('success', 'Testimonial has been updated successfully!');
     }
 
@@ -95,7 +95,7 @@ class AdminTestimonialController extends Controller
     public function destroy(string $id)
     {
         $testimonial = Testimonial::destroy($id);
-        return redirect('/admin/testimonial')
+        return redirect()->route('testimonials.index')
             ->with('success', 'Testimonial has been deleted successfully!');
     }
 }

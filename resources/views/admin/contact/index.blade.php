@@ -48,12 +48,12 @@
                                             {{ \Carbon\Carbon::parse($contact->created_at)->format('m/d/Y') }}
                                         </td>
                                         <td >
-                                            <a class="btn" href="{{ route('admin.contact.show', $contact->id) }}" aria-label="view contact">
+                                            <a class="btn" href="{{ route('contacts.show', [$contact->id]) }}" aria-label="view contact">
                                               View
                                             </a>
                                         </td>
                                         <td>
-                                            <form action="{{ route('admin.contact.delete', [$contact->id]) }}" method="POST">
+                                            <form action="{{ route('contacts.delete', [$contact->id]) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn" type="submit" onclick="return confirm('Are you sure you want to delete this contact?')" aria-label="delete contact">

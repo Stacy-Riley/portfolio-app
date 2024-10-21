@@ -16,7 +16,7 @@ class AdminContactController extends Controller
         $contacts = Contact::orderBy('created_at', 'desc')
             ->get();
 
-        return view('admin.contact_index')
+        return view('admin.contact.index')
             ->with('contacts', $contacts);
     }
 
@@ -42,7 +42,7 @@ class AdminContactController extends Controller
     public function show(string $id)
     {
         $contact = Contact::findOrFail($id);
-        return view('admin.contact_show')
+        return view('admin.contact.show')
             ->with('contact', $contact);
     }
 
@@ -68,7 +68,7 @@ class AdminContactController extends Controller
     public function destroy(string $id)
     {
         $contact = Contact::destroy($id);
-        return redirect()->route('admin.contact')
+        return redirect()->route('contacts.index')
             ->with('success', 'Contact was deleted successfully');
     }
 }

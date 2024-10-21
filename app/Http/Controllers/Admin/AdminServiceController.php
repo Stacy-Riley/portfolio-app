@@ -28,7 +28,7 @@ class AdminServiceController extends Controller
         $services = Service::orderBy('priority', 'asc')
             ->get();
 
-        return view('admin.service_index')
+        return view('admin.service.index')
             ->with('services', $services);
     }
 
@@ -38,7 +38,7 @@ class AdminServiceController extends Controller
     public function create()
     {
 
-        return view('admin.service_create');
+        return view('admin.service.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class AdminServiceController extends Controller
         ]);
 
         Service::create($formData);
-        return redirect()->route('admin.service')
+        return redirect()->route('services.index')
             ->with('success', 'The service has been added successfully!');
     }
 
@@ -71,7 +71,8 @@ class AdminServiceController extends Controller
     public function edit(string $id)
     {
         $service = Service::findOrFail($id);
-        return view('admin.service_edit')->with('service', $service);
+        return view('admin.service.edit')
+            ->with('service', $service);
     }
 
     /**
@@ -86,7 +87,7 @@ class AdminServiceController extends Controller
             'is_published' => 'required|boolean',
         ]);
         $service->update($formData);
-        return redirect()->route('admin.service')
+        return redirect()->route('services.index')
             ->with('success', 'The service has been updated successfully!');
     }
 
@@ -96,7 +97,7 @@ class AdminServiceController extends Controller
     public function destroy(string $id)
     {
         $service = Service::destroy($id);
-        return redirect()->route('admin.service')
+        return redirect()->route('services.index')
             ->with('success', 'The service has been deleted successfully!');
     }
 }

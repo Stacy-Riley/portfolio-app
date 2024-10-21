@@ -26,7 +26,7 @@ class AdminProjectController extends Controller
     public function index()
     {
         $projects = Project::orderBy('priority', 'asc')->get();
-        return view('admin.project_index')
+        return view('admin.project.index')
             ->with('projects', $projects);
     }
 
@@ -35,7 +35,7 @@ class AdminProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.project_create');
+        return view('admin.project.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class AdminProjectController extends Controller
 
         }
         Project::create($formData);
-        return redirect('admin/project')
+        return redirect()->route('projects.index')
             ->with('success', 'The project has been added successfully!');
     }
 
@@ -80,7 +80,7 @@ class AdminProjectController extends Controller
     public function edit(string $id)
     {
         $project = Project::findOrFail($id);
-        return view('admin.project_edit')
+        return view('admin.project.edit')
             ->with('project', $project);
     }
 
@@ -111,7 +111,7 @@ class AdminProjectController extends Controller
 
             $project->update($formData);
 
-            return redirect('admin/project')
+            return redirect()->route('projects.index')
                 ->with('success', 'The project has been updated successfully!');
 
     }
@@ -121,7 +121,7 @@ class AdminProjectController extends Controller
     public function destroy(string $id)
     {
         $project = Project::destroy($id);
-        return redirect('admin/project')
+        return redirect()->route('projects.index')
             ->with('success', 'The project has been deleted successfully!');
     }
 }

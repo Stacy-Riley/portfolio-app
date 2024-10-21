@@ -10,11 +10,9 @@ use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TestimonialController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -34,57 +32,72 @@ Route::post('/contact', [ContactController::class, 'store'])
     ->name('contactForm');
 
 
-
 Route::middleware(['auth', 'verified'])->group(function () {
+
+    //Admin Dashboard
     Route::get('/dashboard', [AdminHomeController::class, 'show'])->name('dashboard');
 
-    //Admin Homepage profiles
-    Route::get('/admin/profile', [AdminProfileController::class, 'index'])->name('admin.profile');
-    Route::get('admin/profile/create', [AdminProfileController::class, 'create'])->name('admin.profile.create');
-    Route::post('admin/profile/store', [AdminProfileController::class, 'store'])->name('admin.profile.store');
-    Route::get('admin/profile/edit/{id}', [AdminProfileController::class, 'edit'])->name('admin.profile.edit');
-    Route::put('admin/profile/update/{id}', [AdminProfileController::class, 'update'])->name('admin.profile.update');
-    Route::delete('admin/profile/delete/{id}', [AdminProfileController::class, 'destroy'])->name('admin.profile.delete');
+    Route::prefix('admin')->group(function () {
+        //Admin Blog
+        Route::controller(AdminBlogController::class)->group(function () {
+            Route::get('blog', 'index')->name('blogs.index');
+            Route::get('blog/create', 'create')->name('blogs.create');
+            Route::post('blog/store', 'store')->name('blogs.store');
+            Route::get('blog/edit/{id}', 'edit')->name('blogs.edit');
+            Route::put('blog/update/{id}', 'update')->name('blogs.update');
+            Route::delete('blog/delete/{id}', 'destroy')->name('blogs.delete');
+        });
 
-    //Admin Services
-    Route::get('admin/service', [AdminServiceController::class, 'index'])->name('admin.service');
-    Route::get('admin/service/create', [AdminServiceController::class, 'create'])->name('admin.service.create');
-    Route::post('admin/service/store', [AdminServiceController::class, 'store'])->name('admin.service.store');
-    Route::get('admin/service/edit/{id}', [AdminServiceController::class, 'edit'])->name('admin.service.edit');
-    Route::put('admin/service/update/{id}', [AdminServiceController::class, 'update'])->name('admin.service.update');
-    Route::delete('admin/service/delete/{id}', [AdminServiceController::class, 'destroy'])->name('admin.service.delete');
-    Route::post('/admin/service/reorder', [AdminServiceController::class, 'reorder'])->name('admin.service.reorder');
+        //Admin Contact
+        Route::controller(AdminContactController::class)->group(function () {
+            Route::get('contact', 'index')->name('contacts.index');
+            Route::get('contact/show/{id}', 'show')->name('contacts.show');
+            Route::delete('contact/delete/{id}', 'destroy')->name('contacts.delete');
+        });
 
-    //Admin Projects
-    Route::get('admin/project', [AdminProjectController::class, 'index'])->name('admin.project');
-    Route::get('admin/project/create', [AdminProjectController::class, 'create'])->name('admin.project.create');
-    Route::post('admin/project/store', [AdminProjectController::class, 'store'])->name('admin.project.store');
-    Route::get('admin/project/edit/{id}', [AdminProjectController::class, 'edit'])->name('admin.project.edit');
-    Route::put('admin/project/update/{id}', [AdminProjectController::class, 'update'])->name('admin.project.update');
-    Route::delete('admin/project/delete/{id}', [AdminProjectController::class, 'destroy'])->name('admin.project.delete');
-    Route::post('/admin/project/reorder', [AdminProjectController::class, 'reorder'])->name('admin.project.reorder');
+        //Admin Homepage profiles
+        Route::controller(AdminProfileController::class)->group(function () {
+            Route::get('profile', 'index')->name('profiles.index');
+            Route::get('profile/create', 'create')->name('profiles.create');
+            Route::post('profile/store', 'store')->name('profiles.store');
+            Route::get('profile/edit/{id}', 'edit')->name('profiles.edit');
+            Route::put('profile/update/{id}', 'update')->name('profiles.update');
+            Route::delete('profile/delete/{id}', 'destroy')->name('profiles.delete');
+        });
 
-    //Admin Testimonials
-    Route::get('admin/testimonial', [AdminTestimonialController::class, 'index'])->name('admin.testimonial');
-    Route::get('admin/testimonial/create', [AdminTestimonialController::class, 'create'])->name('admin.testimonial.create');
-    Route::post('admin/testimonial/store', [AdminTestimonialController::class, 'store'])->name('admin.testimonial.store');
-    Route::get('admin/testimonial/edit/{id}', [AdminTestimonialController::class, 'edit'])->name('admin.testimonial.edit');
-    Route::put('admin/testimonial/update/{id}', [AdminTestimonialController::class, 'update'])->name('admin.testimonial.update');
-    Route::delete('admin/testimonial/delete/{id}', [AdminTestimonialController::class, 'destroy'])->name('admin.testimonial.delete');
-    Route::post('/admin/testimonial/reorder', [AdminTestimonialController::class, 'reorder'])->name('admin.testimonial.reorder');
+        //Admin Projects
+        Route::controller(AdminProjectController::class)->group(function () {
+            Route::get('project', 'index')->name('projects.index');
+            Route::get('project/create', 'create')->name('projects.create');
+            Route::post('project/store', 'store')->name('projects.store');
+            Route::get('project/edit/{id}', 'edit')->name('projects.edit');
+            Route::put('project/update/{id}', 'update')->name('projects.update');
+            Route::delete('project/delete/{id}', 'destroy')->name('projects.delete');
+            Route::post('project/reorder', 'reorder')->name('projects.reorder');
+        });
 
-    //Admin Blog
-    Route::get('admin/blog', [AdminBlogController::class, 'index'])->name('admin.blog');
-    Route::get('admin/blog/create', [AdminBlogController::class, 'create'])->name('admin.blog.create');
-    Route::post('admin/blog/store', [AdminBlogController::class, 'store'])->name('admin.blog.store');
-    Route::get('admin/blog/edit/{id}', [AdminBlogController::class, 'edit'])->name('admin.blog.edit');
-    Route::put('admin/blog/update/{id}', [AdminBlogController::class, 'update'])->name('admin.blog.update');
-    Route::delete('admin/blog/delete/{id}', [AdminBlogController::class, 'destroy'])->name('admin.blog.delete');
+        //Admin Services
+        Route::controller(AdminServiceController::class)->group(function(){
+            Route::get('service', 'index')->name('services.index');
+            Route::get('service/create', 'create')->name('services.create');
+            Route::post('service/store', 'store')->name('services.store');
+            Route::get('service/edit/{id}', 'edit')->name('services.edit');
+            Route::put('service/update/{id}', 'update')->name('services.update');
+            Route::delete('service/delete/{id}', 'destroy')->name('services.delete');
+            Route::post('service/reorder', 'reorder')->name('services.reorder');
+        });
 
-    //Admin Contact
-    Route::get('admin/contact', [AdminContactController::class, 'index'])->name('admin.contact');
-    Route::get('admin/contact/show/{id}', [AdminContactController::class, 'show'])->name('admin.contact.show');
-    Route::delete('admin/contact/delete/{id}', [AdminContactController::class, 'destroy'])->name('admin.contact.delete');
+        //Admin Testimonials
+        Route::controller(AdminTestimonialController::class)->group(function(){
+            Route::get('testimonial', 'index')->name('testimonials.index');
+            Route::get('testimonial/create', 'create')->name('testimonials.create');
+            Route::post('testimonial/store', 'store')->name('testimonials.store');
+            Route::get('testimonial/edit/{id}', 'edit')->name('testimonials.edit');
+            Route::put('testimonial/update/{id}', 'update')->name('testimonials.update');
+            Route::delete('testimonial/delete/{id}', 'destroy')->name('testimonials.delete');
+            Route::post('testimonial/reorder', 'reorder')->name('testimonials.reorder');
+        });
+    });
 });
 
 require __DIR__.'/auth.php';

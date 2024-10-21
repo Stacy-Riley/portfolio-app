@@ -22,7 +22,7 @@
             </div>
             <div class="row">
                 <div class="col-12 col-lg-10 offset-md-2-5 my-4 p-0">
-                    <a href="/admin/profile/create" type="button" class="btn admin-form-button">New Profile</a>
+                    <a href="{{ route('profiles.create') }}" type="button" class="btn admin-form-button">New Profile</a>
                 </div>
             </div>
             <div class="row">
@@ -70,11 +70,11 @@
                                         <span class="dropdown">
                                             <button class="btn dropdown-toggle align-text-top" data-bs-boundary="viewport" data-bs-toggle="dropdown">Actions</button>
                                               <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{ route('admin.profile.edit', $profile->id) }}" aria-label="edit profile">
+                                                <a class="dropdown-item" href="{{ route('profiles.edit', $profile->id) }}" aria-label="edit profile">
                                                   Edit
                                                 </a>
 
-                                                  <form action="{{route('admin.profile.delete',[$profile->id])}}" method="POST">
+                                                  <form action="{{route('profiles.delete',[$profile->id])}}" method="POST">
                                                       @method('DELETE')
                                                       @csrf
                                                          <button class="dropdown-item" type="submit" onclick="if (!confirm('Are you sure you want to delete this profile?')) { return false }" aria-label="delete profile">
